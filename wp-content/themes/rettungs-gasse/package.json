@@ -1,0 +1,27 @@
+{
+  "name": "rettungsgassewptheme",
+  "title": "Rettungs Gasse Wordpress Theme",
+  "description": "Das Wordpress Theme für die rettungs-gasse.ch Webseite",
+  "version": "0.1.0",
+  "homepage": "https://rueegger.me",
+  "author": {
+    "name": "Samuel Rüegger",
+    "email": "samuel@rueegger.me"
+  },
+  "devDependencies": {
+    "grunt": "^1.0.1",
+    "grunt-contrib-concat": "^1.0.1",
+    "grunt-contrib-cssmin": "^2.2.1",
+    "grunt-contrib-jshint": "^1.1.0",
+    "grunt-contrib-sass": "^1.0.0",
+    "grunt-contrib-uglify": "^3.1.0",
+    "grunt-contrib-watch": "^1.0.0",
+    "matchdep": "^2.0.0",
+    "bootstrap": "^4.0.0-beta.2",
+    "popper.js": "^1.12.6",
+    "jquery": "^3.2.1",
+    "jquery-ui": "^1.12.1",
+    "font-awesome-sass": "^4.7.0",
+    "hamburgers": "^0.9.1"
+  }
+}
