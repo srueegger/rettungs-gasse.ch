@@ -1,0 +1,67 @@
+.navbar {
+	min-height: 120px;
+	background-color: rgba(255, 255, 255, 0.8);
+}
+
+.site-logo {
+	max-width: 115px;
+}
+
+.nav-link {
+	text-transform: uppercase;
+	text-decoration: none;
+}
+
+.nav-link:hover,
+.nav-item.active a,
+.current-menu-parent {
+	text-decoration: none;
+	color: $primary;
+	border-bottom: 2px solid $primary;
+}
+
+.wpml-ls-current-language {
+	border-left: 2px solid $primary;
+	border-radius: 50%;
+}
+
+.wpml-ls-current-language a:hover {
+	border-bottom: none;
+}
+
+.hamburger:focus {
+	outline: none;
+}
+
+.dropdown-menu.show {
+	background-color: rgba(255, 255, 255, 0.7);
+	border-color: $primary;
+}
+
+.dropdown-item {
+	color: $primary;
+	text-decoration: none;
+}
+
+.dropdown-item:hover {
+	color: white;
+	background-color: $primary;
+}
+
+.page-header-image {
+	height: 100vh;
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-size: cover;
+	filter: sepia(1);
+	background-attachment: fixed;
+}
+
+.page-header-image h2 {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	background-color: rgba(255, 255, 255, 0.7);
+	padding: 2.5rem;
+}

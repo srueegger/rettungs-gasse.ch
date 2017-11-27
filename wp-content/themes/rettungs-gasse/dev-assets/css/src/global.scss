@@ -1,0 +1,265 @@
+h1, h2, h3, h4, h5, h6 {
+	color: $primary;
+}
+
+a {
+	text-decoration: underline;
+}
+
+img {
+	border: 5px solid $primary;
+}
+
+blockquote {
+	border-left: 2px solid $primary;
+	padding-left: 2rem;
+	font-style: italic;
+	margin-top: 2rem;
+	margin-bottom: 2rem;
+}
+
+.lp-news-meta {
+	color: $primary;
+}
+
+.no-border {
+	border: none;
+}
+
+.btn {
+	text-decoration: none;
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+	text-decoration: none;
+}
+
+.carousel-inner-testimonial .active,
+.carousel-inner-testimonial .active + .carousel-item,
+.carousel-inner-testimonial .active + .carousel-item + .carousel-item {
+		display: block;
+}
+
+.carousel-inner-testimonial .carousel-item.active:not(.carousel-item-right):not(.carousel-item-left),
+.carousel-inner-testimonial .carousel-item.active:not(.carousel-item-right):not(.carousel-item-left) + .carousel-item,
+.carousel-inner-testimonial .carousel-item.active:not(.carousel-item-right):not(.carousel-item-left) + .carousel-item + .carousel-item {
+		transition: none;
+}
+
+.carousel-inner-testimonial .carousel-item-next,
+.carousel-inner-testimonial .carousel-item-prev {
+	position: relative;
+	transform: translate3d(0, 0, 0);
+}
+
+.carousel-inner-testimonial .active.carousel-item + .carousel-item + .carousel-item + .carousel-item {
+	position: absolute;
+	top: 0;
+	right: -33.3333%;
+	z-index: -1;
+	display: block;
+	visibility: visible;
+}
+
+.carousel-inner-testimonial .active.carousel-item-left + .carousel-item-next.carousel-item-left,
+.carousel-inner-testimonial .carousel-item-next.carousel-item-left + .carousel-item,
+.carousel-inner-testimonial .carousel-item-next.carousel-item-left + .carousel-item + .carousel-item,
+.carousel-inner-testimonial .carousel-item-next.carousel-item-left + .carousel-item + .carousel-item + .carousel-item {
+	position: relative;
+	transform: translate3d(-100%, 0, 0);
+	visibility: visible;
+}
+
+.carousel-inner-cf .carousel-item-prev.carousel-item-right {
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: -1;
+	display: block;
+	visibility: visible;
+}
+
+#testimonial-slider .active.carousel-item-right + .carousel-item-prev.carousel-item-right,
+#testimonial-slider .carousel-item-prev.carousel-item-right + .carousel-item,
+#testimonial-slider .carousel-item-prev.carousel-item-right + .carousel-item + .carousel-item,
+#testimonial-slider .carousel-item-prev.carousel-item-right + .carousel-item + .carousel-item + .carousel-item {
+	position: relative;
+	transform: translate3d(100%, 0, 0);
+	visibility: visible;
+	display: block;
+	visibility: visible;
+}
+
+.carousel-control-prev,
+.carousel-control-next,
+.carousel-control-prev:hover
+.carousel-control-next:hover {
+	color: $primary;
+	opacity: 1;
+}
+
+.carousel-control-prev:focus,
+.carousel-control-prev:hover,
+.carousel-control-next:focus,
+.carousel-control-next:hover {
+	color: $primary;
+}
+
+.testimonial-image {
+	border-radius: 50%;
+}
+
+.jumbotron ul {
+	list-style-type: none;
+	text-align: center;
+}
+
+.jumbotron ul li {
+	display: inline;
+}
+
+.jumbotron ul li a {
+	color: white;
+}
+
+.testimonial-autor-txt {
+	font-style: italic;
+	color: $gray-600;
+}
+
+#lp-heros{
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center center;
+	width: 100%;
+	min-height: 600px;
+}
+
+#lp-heros h2 {
+	font-size: 4.5rem;
+}
+
+.heros-white {
+	background-color: rgba(255, 255, 255, 0.7);
+	margin-top: 7rem;
+	padding: 3rem;
+}
+
+.carousel-caption {
+	background-color: rgba(255, 255, 255, 0.7);
+	bottom: 50px;
+}
+
+.carousel-caption p {
+	color: $body-color;
+}
+
+.slider-indicator {
+	background-color: rgba(1,73,121,0.5);
+}
+
+.slider-indicator.active {
+	background-color: $primary;
+}
+
+.post-date-container {
+	white-space: nowrap;
+}
+
+.testimonial-text {
+	min-height: 210px;
+}
+
+.social-twitter:hover {
+	color: #00aced !important;
+}
+
+.social-facebook:hover {
+	color: #3b5998 !important;
+}
+
+.social-instagram:hover {
+	color: #8a3ab9 !important;
+}
+
+.social-youtube:hover {
+	color: #c4302b !important;
+}
+
+.social-linkedin:hover {
+	color: #00a0dc !important;
+}
+
+.page {
+	hyphens: auto;
+}
+
+.embed-container { 
+	position: relative; 
+	padding-bottom: 56.25%;
+	height: 0;
+	overflow: hidden;
+	max-width: 100%;
+	height: auto;
+} 
+ 
+.embed-container iframe,
+.embed-container object,
+.embed-container embed { 
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
+
+.card {
+	border: none;
+}
+
+.card-header {
+	background-color: transparent;
+	border: none;
+}
+
+.card-header i {
+	color: $primary;
+}
+
+.faq-link {
+	color: $body-color;
+	text-decoration: none;
+	font-size: 1.2rem;
+}
+
+.faq-link:hover {
+	color: $primary;
+	text-decoration: none;
+}
+
+.card-body {
+	background-color: transparent;
+	border-left: 2px solid $primary;
+}
+
+.team-image{
+	border-radius: 50%;
+}
+
+.team-title {
+	text-align: center;
+	margin-top: 1.5rem;
+}
+
+.team-function {
+	text-align: center;
+}
+
+.team-caption {
+	bottom: 30%;
+	left: 0;
+	right: 0;
+	padding-top: 0;
+	background-color: transparent;
+}

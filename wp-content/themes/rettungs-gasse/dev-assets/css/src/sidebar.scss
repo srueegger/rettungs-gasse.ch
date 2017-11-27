@@ -1,0 +1,31 @@
+#sidebar {
+	border-left: 2px solid $primary;
+}
+
+.widget-title {
+	background-color: $primary;
+	padding: 1rem;
+}
+
+.widget-title h5 {
+	color: $white;
+	padding: 0;
+}
+
+.widget-content {
+	border: 1px solid $gray-400;
+	border-top: none;
+}
+
+.widget-sidebar-container {
+	margin-bottom: 2rem;
+}
+
+.widget_media_image img {
+	border: none;
+	width: 100%;
+}
+
+.widget-content .textwidget {
+	padding: 1rem;
+}

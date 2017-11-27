@@ -20,7 +20,6 @@ module.exports = function( grunt ) {
                 src: [
 					'node_modules/popper.js/dist/umd/popper.js',
 					'node_modules/bootstrap/dist/js/bootstrap.js',
-                    'dev-assets/js/_vendor/*.js',
                     'dev-assets/js/src/main.js'
                 ],
                 dest: 'dev-assets/js/theme.js'

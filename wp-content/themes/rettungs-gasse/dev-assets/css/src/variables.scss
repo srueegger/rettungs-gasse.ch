@@ -36,13 +36,13 @@ $grays: map-merge((
   "900": $gray-900
 ), $grays);
 
-$blue: #01a7e1 !default;
+$blue: #014979 !default;
 $blue-light: #3bd4f3 !default;
 $indigo:  #6610f2 !default;
 $purple:  #6f42c1 !default;
 $pink:    #e83e8c !default;
 $red:     #e22123 !default;
-$orange:  #fd7e14 !default;
+$orange:  #f58848 !default;
 $yellow:  #ffc107 !default;
 $green:   #28a745 !default;
 $teal:    #20c997 !default;
@@ -72,7 +72,7 @@ $info:          $cyan !default;
 $warning:       $yellow !default;
 $danger:        $red !default;
 $light:         $gray-100 !default;
-$dark:          $gray-800 !default;
+$dark:          #261c18 !default;
 
 $theme-colors: () !default;
 $theme-colors: map-merge((
@@ -89,12 +89,19 @@ $theme-colors: map-merge((
 
 // Set a specific jump point for requesting color jumps
 $theme-color-interval:		8% !default;
-$link-color:                #01a5e1 !default;
-$link-hover-decoration:		'underline' !default;
-$font-family-sans-serif:	'Work Sans', sans-serif;
+$link-color:                $blue !default;
+$link-hover-decoration:		underline !default;
+$font-family-sans-serif:	'Lato', sans-serif;
 $font-family-base:			$font-family-sans-serif !default;
 $body-color:                $black !default;
 
+$font-size-base:              1rem !default;
+$h1-font-size:                $font-size-base * 3 !default;
+$h2-font-size:                $font-size-base * 2.5 !default;
+$h3-font-size:                $font-size-base * 2 !default;
+$h4-font-size:                $font-size-base * 1.75 !default;
+$h5-font-size:                $font-size-base * 1.5 !default;
+$h6-font-size:                $font-size-base !default;
 
 /*!
  * Hamburgers
@@ -111,7 +118,7 @@ $hamburger-padding-y                       : 15px !default;
 $hamburger-layer-width                     : 40px !default;
 $hamburger-layer-height                    : 4px !default;
 $hamburger-layer-spacing                   : 6px !default;
-$hamburger-layer-color                     : $body-color !default;
+$hamburger-layer-color                     : $primary !default;
 $hamburger-layer-border-radius             : 4px !default;
 $hamburger-hover-opacity                   : 1 !default;
 $hamburger-hover-transition-duration       : 0.15s !default;
@@ -126,5 +133,5 @@ $hamburger-hover-filter    : opacity(0%) !default;
 // Types (Remove or comment out what you don’t need)
 // ==================================================
 $hamburger-types: (
-  spin
+  elastic
 ) !default;
