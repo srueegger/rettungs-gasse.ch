@@ -51,6 +51,15 @@
 		else:
 			$bg_img_txt = $page_bg_text;
 		endif;
+		if(is_post_type_archive('team')):
+			$team_settings = get_field('header_einstellungen', 'option');
+			$bg_img_url = $team_settings['team_bg_image']['sizes']['fullwidth-image'];
+			$bg_img_txt = $team_settings['team_title'];
+		endif;
+		if(is_post_type_archive('presse')):
+			$bg_img_url = get_field('bg_presse_header_image', 'option')['sizes']['fullwidth-image'];
+			$bg_img_txt = get_field('bg_presse_title', 'option');
+		endif;
 		?>
 		<div class="page-header-image mb-5" style="background-image: url('<?php echo $bg_img_url; ?>');">
 			<div class="header-title-container"><h2><?php echo $bg_img_txt; ?></h2></div>

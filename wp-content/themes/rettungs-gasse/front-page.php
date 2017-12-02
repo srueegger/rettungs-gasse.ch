@@ -31,8 +31,8 @@ if ( have_posts() ) : while ( have_posts() ):
 						endif;
 						$image = get_sub_field('image');
 						?>
-						<div class="carousel-item<?php echo $active; ?>">
-							<img class="d-block w-100 no-border" src="<?php echo $image['sizes']['fullwidth-image']; ?>" alt="<?php echo $counter; ?>. Slide">
+						<div style="background-image: url('<?php echo $image['sizes']['fullwidth-image']; ?>');" class="lp-bg-slide-item carousel-item<?php echo $active; ?>">
+							<!-- <img class="d-block w-100 no-border lp-main-slider" src="<?php echo $image['sizes']['fullwidth-image']; ?>" alt="<?php echo $counter; ?>. Slide"> -->
 							<?php if(!empty(get_sub_field('title')) or !empty(get_sub_field('slider_txt'))): ?>
 								<div class="carousel-caption d-none d-md-block">
 									<?php if(!empty(get_sub_field('title'))): ?>
@@ -53,26 +53,95 @@ if ( have_posts() ) : while ( have_posts() ):
 				</div>
 				<?php rg_print_slider_controls('lp-slider'); ?>
 			</div>
-			<?php
-			$image_container = get_field('image_container');
-			$target = '_self';
-			if(!empty($image_container['button_link']['target'])):
-				$target = '_blank';
-			endif;
-			?>
-			<div id="lp-heros" class="d-inline-block mt-5" style="background-image: url('<?php echo $image_container['bg_image']['sizes']['fullwidth-image']; ?>');">
-				<div class="container">
-					<div class="row heros-white">
-						<div class="col-12 text-center">
-							<h2><?php echo $image_container['title']; ?></h2>
-							<h3><?php echo $image_container['subtitle']; ?></h3>
-							<p class="mt-5"><a class="btn btn-primary btn-lg" target="<?php echo $target; ?>" href="<?php echo $image_container['button_link']['url']; ?>"><?php echo $image_container['button_text']; ?></a></p>
+		</div>
+		<?php while( have_rows('minislider_settings') ): the_row(); ?>
+		<div class="container-fluid mt-5">
+			<div id="lp-content-slider" class="carousel slide d-none d-lg-block" data-ride="carousel" data-interval="<?php the_sub_field('geschwindigkeit_des_mini_sliders'); ?>">
+				<div class="carousel-inner carousel-inner-lpcontentslider row mx-auto" role="listbox">
+					<?php
+					$counter = 1;
+					while( have_rows('slider') ):
+						the_row();
+						$active = '';
+						if($counter == 1):
+							$active = ' active';
+						endif;
+						$image = get_sub_field('image');
+						$link = get_sub_field('link');
+						?>
+						<div class="carousel-item carousel-lpcontent-item col-4<?php echo $active; ?>">
+							<div class="bg-lp-content-img-container" style="background-image: url('<?php echo $image['sizes']['content-slider']; ?>');">
+								<h4><?php the_sub_field('text'); ?></h4>
+								<?php
+								$target = '_self';
+								if(!empty($link['target'])):
+									$target = '_blank';
+								endif;
+								?>
+								<p><a target="<?php echo $target; ?>" href="<?php echo $link['url']; ?>"><?php echo $link['title']; ?></a></p>
+							</div>
 						</div>
-					</div>
-					<div class="row">
+						<?php
+						$counter++;
+					endwhile;
+					?>
+				</div>
+				<?php rg_print_slider_controls('lp-content-slider'); ?>
+			</div>
+			<div id="lp-content-slider-mobile" class="carousel slide d-block d-lg-none" data-ride="carousel" data-interval="<?php the_sub_field('geschwindigkeit_des_mini_sliders'); ?>">
+				<div class="carousel-inner carousel-inner-lpcontentslider-mobile row mx-auto" role="listbox">
+					<?php
+					$counter = 1;
+					while( have_rows('slider') ):
+						the_row();
+						$active = '';
+						if($counter == 1):
+							$active = ' active';
+						endif;
+						$image = get_sub_field('image');
+						$link = get_sub_field('link');
+						?>
+						<div class="carousel-item carousel-lpcontent-item-mobile col-12<?php echo $active; ?>">
+							<div class="bg-lp-content-img-container" style="background-image: url('<?php echo $image['sizes']['content-slider']; ?>');">
+								<h4><?php the_sub_field('text'); ?></h4>
+								<?php
+								$target = '_self';
+								if(!empty($link['target'])):
+									$target = '_blank';
+								endif;
+								?>
+								<p><a target="<?php echo $target; ?>" href="<?php echo $link['url']; ?>"><?php echo $link['title']; ?></a></p>
+							</div>
+						</div>
+						<?php
+						$counter++;
+					endwhile;
+					?>
+				</div>
+				<?php rg_print_slider_controls('lp-content-slider-mobile'); ?>
+			</div>
+		</div>
+		<?php endwhile; ?>
+		<?php
+		$image_container = get_field('image_container');
+		$target = '_self';
+		if(!empty($image_container['button_link']['target'])):
+			$target = '_blank';
+		endif;
+		?>
+		<div id="lp-heros" class="d-inline-block mt-5" style="background-image: url('<?php echo $image_container['bg_image']['sizes']['fullwidth-image']; ?>');">
+			<div class="container">
+				<div class="row heros-white">
+					<div class="col-12 text-center">
+						<h2><?php echo $image_container['title']; ?></h2>
+						<h3><?php echo $image_container['subtitle']; ?></h3>
+						<p class="mt-5"><a class="btn btn-primary btn-lg" target="<?php echo $target; ?>" href="<?php echo $image_container['button_link']['url']; ?>"><?php echo $image_container['button_text']; ?></a></p>
 					</div>
 				</div>
+				<div class="row">
+				</div>
 			</div>
+		</div>
 		<div class="container mt-5">
 			<div class="row">
 				<div class="col-12">
@@ -134,6 +203,11 @@ if ( have_posts() ) : while ( have_posts() ):
 					endforeach;
 					wp_reset_postdata();
 				?>
+			</div>
+			<div class="row mt-3">
+				<div class="col-12">
+					<p class="text-center"><a href="<?php echo HOME_URI; ?>/news" class="btn btn-primary">Ältere Neuigkeiten<i class="fa fa-chevron-down ml-2"></i></a></p>
+				</div>
 			</div>
 		</div>
 		<div class="jumbotron jumbotron-fluid mt-5 bg-primary">

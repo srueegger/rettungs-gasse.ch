@@ -3,7 +3,7 @@
 Plugin Name: Custom Post Types and Taxonomies
 Plugin URI: https://rueegger.me
 Description: Erstellt die Custom Post Type für rettungs-gasse.ch
-Version: 1.1.0
+Version: 1.3
 Author: Samuel Rüegger
 Author URI: https://rueegger.me
 */
@@ -93,7 +93,7 @@ function rg_cpttax_create_posttypes(){
 		'show_in_rest'			=> true,
 		'can_export'			=> true,
 		'has_archive'			=> false,
-		'exclude_from_search'	=> true,
+		'exclude_from_search'	=> false,
 		'publicly_queryable'	=> true,
 		'capability_type'		=> 'post',
 		'menu_icon'				=> 'dashicons-editor-help',
@@ -138,7 +138,7 @@ function rg_cpttax_create_posttypes(){
 		'show_in_rest'			=> true,
 		'can_export'			=> true,
 		'has_archive'			=> true,
-		'exclude_from_search'	=> true,
+		'exclude_from_search'	=> false,
 		'publicly_queryable'	=> true,
 		'capability_type'		=> 'post',
 		'menu_icon'				=> 'dashicons-groups',
@@ -148,6 +148,74 @@ function rg_cpttax_create_posttypes(){
 		),
 	);
 	register_post_type( 'team', $args );
+	
+	//Add Settings Page to Post Type
+	$args = array(
+		'page_title' => 'Team Einstellungen',
+		'menu_title' => 'Einstellungen',
+		'menu_slug' => 'rg-team-settings',
+		'parent_slug' => 'edit.php?post_type=team',
+	);
+	acf_add_options_sub_page($args);
+	
+	//Presse
+	$labels = array(
+		'name'					=> 'Presse',
+		'singular_name'			=> 'Presse',
+		'menu_name'				=> 'Presse',
+		'parent-item-colon'		=> 'Presse Eltern',
+		'all_items'				=> 'Alle Presse Einträge',
+		'view_item'				=> 'Presse Eintrag ansehen',
+		'add_new_item'			=> 'Neuer Presse Eintrag hinzufügen',
+		'add_new'				=> 'Hinzufügen',
+		'edit_item'				=> 'Presse Eintrag bearbeiten',
+		'update_item'			=> 'Presse Eintrag aktualisieren',
+		'search_items'			=> 'Presse Eintrag suchen',
+		'not_found'				=> 'Keine Presse Einträge gefunden',
+		'not_found_in_trash'	=> 'Keine Presse Einträge im Papierkorb gefunden'
+	);
+	$supports = array(
+		'title',
+		'author',
+		'editor',
+		'revisions',
+		'custom-fields',
+		'thumbnail'
+	);
+	$args = array(
+		'label'					=> 'presse',
+		'description'			=> 'Presseartikel Verwaltung für rettungs-gasse.ch.',
+		'slug'					=> _x('presse', 'rg_custom'),
+		'labels'				=> $labels,
+		'supports'				=> $supports,
+		'hierarchical'			=> false,
+		'public'				=> false,
+		'show_ui'				=> true,
+		'show_in_menu'			=> true,
+		'show_in_nav_menus'		=> true,
+		'show_in_admin_bar'		=> true,
+		'show_in_rest'			=> true,
+		'can_export'			=> true,
+		'has_archive'			=> true,
+		'exclude_from_search'	=> false,
+		'publicly_queryable'	=> true,
+		'capability_type'		=> 'post',
+		'menu_icon'				=> 'dashicons-microphone',
+		'rewrite'				=> array(
+			'slug' => _x('presse', 'rg_custom'),
+			'with_front' => false,
+		),
+	);
+	register_post_type( 'presse', $args );
+	
+	//Add Settings Page to Post Type
+	$args = array(
+		'page_title' => 'Presse Einstellungen',
+		'menu_title' => 'Einstellungen',
+		'menu_slug' => 'rg-presse-settings',
+		'parent_slug' => 'edit.php?post_type=presse',
+	);
+	acf_add_options_sub_page($args);
 
 }
 add_action( 'init', 'rg_cpttax_create_posttypes' );

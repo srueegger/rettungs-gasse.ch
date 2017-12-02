@@ -27,8 +27,7 @@
 	}
 	
 	.jumbotron h2,
-	.jumbotron i,
-	.lp-news-meta  {
+	.jumbotron i {
 		font-size: 2rem;
 	}
 	
@@ -36,5 +35,10 @@
 		padding-top: 0 !important;
 		padding-bottom: 0 !important;
 	}
+	
+	.lp-news-meta {
+		font-size: 1rem;
+	}
+
 
 }

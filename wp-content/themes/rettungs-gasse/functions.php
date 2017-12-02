@@ -14,6 +14,9 @@ define( 'DIST_JS', THEME_URI . '/dist-assets/js' );
  * Include helpers
  ***************************************/
 require_once 'inc/wordpress-bootstrap-navwalker.php';
+if(!WP_DEBUG):
+	require_once 'inc/acf.php';
+endif;
 
 /***************************************
  * 		Theme Support
@@ -28,7 +31,11 @@ add_theme_support( 'post-thumbnails' );
 add_image_size( 'site-logo', 115, 9999, false );
 add_image_size( 'fullwidth-image', 1920, 9999, false );
 add_image_size( 'news-image', 510, 9999, false );
+add_image_size( 'presse-image', 540, 9999, false );
 add_image_size( 'testimonial-image', 100, 100, true );
+add_image_size( 'team-list-image', 510, 510, true );
+add_image_size( 'container-image', 730, 9999, false );
+add_image_size( 'content-slider', 487, 9999, false );
 
 /***************************************
  * Add Wordpress Menus
@@ -64,7 +71,7 @@ add_action( "wp_enqueue_scripts", "rg_startup_scripts" );
 
 
 /***************************************
- * 		Lindahls ACF Init
+ * 		ACF Init
  ***************************************/
 function rg_acf_init() {
  	#acf_update_setting('google_api_key', 'AIzaSyCHQJgXa8qiFPJUqCL4Ia4iLWuvA1V6VMY');
@@ -82,10 +89,11 @@ add_action( 'acf/init', 'rg_acf_init' );
  * Remove Menus from Backend
  ***************************************/
 function rg_remove_menus() {
-	#remove_menu_page( 'edit.php' );
 	remove_menu_page( 'edit-comments.php' );
 	#remove_menu_page( 'tools.php' );
-	#remove_menu_page( 'edit.php?post_type=acf-field-group' );
+	if(!WP_DEBUG):
+		remove_menu_page( 'edit.php?post_type=acf-field-group' );
+	endif;
 }
 add_action( 'admin_menu', 'rg_remove_menus' );
 
@@ -154,15 +162,15 @@ add_action( 'widgets_init', 'rg_widgets_init' );
 *	 Change Class Gravity Forms Submit Buttons
 ***************************************/
 function rg_form_submit_button($button, $form) {
-	return '<input type="submit" class="btn btn-primary w-25" id="gform_submit_button_' . $form['id'] . '" value="' . $form['button']['text'] . '">';
+	return '<input type="submit" class="btn btn-primary" id="gform_submit_button_' . $form['id'] . '" value="' . $form['button']['text'] . '">';
 }
-#add_filter( 'gform_submit_button', 'rg_form_submit_button', 10, 2 );
+add_filter( 'gform_submit_button', 'rg_form_submit_button', 10, 2 );
 
 /***************************************
 *	 Print Slider Controls
 ***************************************/
 function rg_print_slider_controls($slider_id) {
-	$output = '<a class="carousel-control-prev" href="#'.$slider_id.'" role="button" data-slide="prev"><i class="fa fa-chevron-left fa-2x" aria-hidden="true"></i><span class="sr-only">'.get_field('sr_slide_prev', 'option').'</span></a><a class="carousel-control-next" href="#'.$slider_id.'" role="button" data-slide="next"><i class="fa fa-chevron-right fa-2x" aria-hidden="true"></i><span class="sr-only">'.get_field('sr_slide_next', 'option').'</span></a>';
+	$output = '<a class="carousel-control-prev" href="#'.$slider_id.'" role="button" data-slide="prev"><i class="fa fa-chevron-left fa-2x slide-control-left" aria-hidden="true"></i><span class="sr-only">'.get_field('sr_slide_prev', 'option').'</span></a><a class="carousel-control-next" href="#'.$slider_id.'" role="button" data-slide="next"><i class="fa fa-chevron-right fa-2x slide-control-right" aria-hidden="true"></i><span class="sr-only">'.get_field('sr_slide_next', 'option').'</span></a>';
 	echo $output;
 }
 
@@ -177,9 +185,45 @@ add_filter('excerpt_more', 'rg_excerpt_more');
 /***************************************
 *	 Change posts_per_page for Team Archive
 ***************************************/
-function rg_set_posts_per_page_for_towns_cpt( $query ) {
+function rg_set_posts_per_page_for_team_cpt( $query ) {
 	if ( !is_admin() && $query->is_main_query() && is_post_type_archive( 'team' ) ) {
 		$query->set( 'posts_per_page', '-1' );
 	}
 }
-add_action( 'pre_get_posts', 'rg_set_posts_per_page_for_towns_cpt' );
+add_action( 'pre_get_posts', 'rg_set_posts_per_page_for_team_cpt' );
+
+/***************************************
+*	 Change posts_per_page for Presse Archive
+***************************************/
+function rg_set_posts_per_page_for_presse_cpt( $query ) {
+	if ( !is_admin() && $query->is_main_query() && is_post_type_archive( 'presse' ) ) {
+		$query->set( 'posts_per_page', '-1' );
+	}
+}
+add_action( 'pre_get_posts', 'rg_set_posts_per_page_for_presse_cpt' );
+
+
+/***************************************
+ * Customize User Roles
+ ***************************************/
+function rg_userroles(){
+	remove_role( 'subscriber' );
+	remove_role( 'editor' );
+	remove_role( 'contributor' );
+	remove_role( 'author' );
+}
+add_action( 'init', 'rg_userroles' );
+
+/***************************************
+ * Add Option to Remove GravityfLabelsorm 
+ ***************************************/
+add_filter( 'gform_enable_field_label_visibility_settings', '__return_true' );
+
+/***************************************
+ * Allow SVG Upload
+ ***************************************/
+function rg_svg_mime_types($mimes) {
+	$mimes['svg'] = 'image/svg+xml';
+	return $mimes;
+}
+add_filter('upload_mimes', 'rg_svg_mime_types');

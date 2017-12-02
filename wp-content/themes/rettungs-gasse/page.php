@@ -14,6 +14,7 @@ if ( have_posts() ) : while ( have_posts() ):
 				</div>
 				<?php get_sidebar(); ?>
 			</div>
+		</div>
 	</main>
 	<?php
 endwhile; endif;

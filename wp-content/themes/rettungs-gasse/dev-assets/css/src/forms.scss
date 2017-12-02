@@ -1,0 +1,21 @@
+.gform_wrapper.gf_browser_chrome .gfield_checkbox li input,
+.gform_wrapper.gf_browser_chrome .gfield_checkbox li input[type=checkbox],
+.gform_wrapper.gf_browser_chrome .gfield_radio li input[type=radio] {
+	margin-top: 0 !important;
+}
+
+#gform_submit_button_1 {
+	background-color: $white;
+	color: $primary;
+}
+
+#gform_submit_button_1:hover {
+	background-color: $primary;
+	color: $white;
+	border-color: $white;
+}
+
+.validation_message {
+	background-color: transparent !important;
+	border-color: transparent !important;
+}

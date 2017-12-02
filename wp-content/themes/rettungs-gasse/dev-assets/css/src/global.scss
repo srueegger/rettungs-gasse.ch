@@ -30,6 +30,14 @@ blockquote {
 	text-decoration: none;
 }
 
+.lp-bg-slide-item {
+	height:	100vh;
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-attachment: fixed;
+}
+
 .carousel-control-prev,
 .carousel-control-next {
 	text-decoration: none;
@@ -37,23 +45,32 @@ blockquote {
 
 .carousel-inner-testimonial .active,
 .carousel-inner-testimonial .active + .carousel-item,
-.carousel-inner-testimonial .active + .carousel-item + .carousel-item {
-		display: block;
+.carousel-inner-testimonial .active + .carousel-item + .carousel-item,
+.carousel-inner-lpcontentslider .active,
+.carousel-inner-lpcontentslider .active + .carousel-item,
+.carousel-inner-lpcontentslider .active + .carousel-item + .carousel-item {
+	display: block;
 }
 
 .carousel-inner-testimonial .carousel-item.active:not(.carousel-item-right):not(.carousel-item-left),
 .carousel-inner-testimonial .carousel-item.active:not(.carousel-item-right):not(.carousel-item-left) + .carousel-item,
-.carousel-inner-testimonial .carousel-item.active:not(.carousel-item-right):not(.carousel-item-left) + .carousel-item + .carousel-item {
-		transition: none;
+.carousel-inner-testimonial .carousel-item.active:not(.carousel-item-right):not(.carousel-item-left) + .carousel-item + .carousel-item,
+.carousel-inner-lpcontentslider .carousel-item.active:not(.carousel-item-right):not(.carousel-item-left),
+.carousel-inner-lpcontentslider .carousel-item.active:not(.carousel-item-right):not(.carousel-item-left) + .carousel-item,
+.carousel-inner-lpcontentslider .carousel-item.active:not(.carousel-item-right):not(.carousel-item-left) + .carousel-item + .carousel-item {
+	transition: none;
 }
 
 .carousel-inner-testimonial .carousel-item-next,
-.carousel-inner-testimonial .carousel-item-prev {
+.carousel-inner-testimonial .carousel-item-prev,
+.carousel-inner-lpcontentslider .carousel-item-next,
+.carousel-inner-lpcontentslider .carousel-item-prev {
 	position: relative;
 	transform: translate3d(0, 0, 0);
 }
 
-.carousel-inner-testimonial .active.carousel-item + .carousel-item + .carousel-item + .carousel-item {
+.carousel-inner-testimonial .active.carousel-item + .carousel-item + .carousel-item + .carousel-item,
+.carousel-inner-lpcontentslider .active.carousel-item + .carousel-item + .carousel-item + .carousel-item {
 	position: absolute;
 	top: 0;
 	right: -33.3333%;
@@ -65,13 +82,18 @@ blockquote {
 .carousel-inner-testimonial .active.carousel-item-left + .carousel-item-next.carousel-item-left,
 .carousel-inner-testimonial .carousel-item-next.carousel-item-left + .carousel-item,
 .carousel-inner-testimonial .carousel-item-next.carousel-item-left + .carousel-item + .carousel-item,
-.carousel-inner-testimonial .carousel-item-next.carousel-item-left + .carousel-item + .carousel-item + .carousel-item {
+.carousel-inner-testimonial .carousel-item-next.carousel-item-left + .carousel-item + .carousel-item + .carousel-item,
+.carousel-inner-lpcontentslider .active.carousel-item-left + .carousel-item-next.carousel-item-left,
+.carousel-inner-lpcontentslider .carousel-item-next.carousel-item-left + .carousel-item,
+.carousel-inner-lpcontentslider .carousel-item-next.carousel-item-left + .carousel-item + .carousel-item,
+.carousel-inner-lpcontentslider .carousel-item-next.carousel-item-left + .carousel-item + .carousel-item + .carousel-item {
 	position: relative;
 	transform: translate3d(-100%, 0, 0);
 	visibility: visible;
 }
 
-.carousel-inner-cf .carousel-item-prev.carousel-item-right {
+.carousel-inner-testimonial .carousel-item-prev.carousel-item-right,
+.carousel-inner-lpcontentslider .carousel-item-prev.carousel-item-right {
 	position: absolute;
 	top: 0;
 	left: 0;
@@ -83,7 +105,11 @@ blockquote {
 #testimonial-slider .active.carousel-item-right + .carousel-item-prev.carousel-item-right,
 #testimonial-slider .carousel-item-prev.carousel-item-right + .carousel-item,
 #testimonial-slider .carousel-item-prev.carousel-item-right + .carousel-item + .carousel-item,
-#testimonial-slider .carousel-item-prev.carousel-item-right + .carousel-item + .carousel-item + .carousel-item {
+#testimonial-slider .carousel-item-prev.carousel-item-right + .carousel-item + .carousel-item + .carousel-item,
+#lp-content-slider .active.carousel-item-right + .carousel-item-prev.carousel-item-right,
+#lp-content-slider .carousel-item-prev.carousel-item-right + .carousel-item,
+#lp-content-slider .carousel-item-prev.carousel-item-right + .carousel-item + .carousel-item,
+#lp-content-slider .carousel-item-prev.carousel-item-right + .carousel-item + .carousel-item + .carousel-item {
 	position: relative;
 	transform: translate3d(100%, 0, 0);
 	visibility: visible;
@@ -245,6 +271,12 @@ blockquote {
 
 .team-image{
 	border-radius: 50%;
+	width: 510px;
+}
+
+.team-image:hover {
+	ms-filter: blur(5px);
+	filter: blur(5px);
 }
 
 .team-title {
@@ -261,5 +293,43 @@ blockquote {
 	left: 0;
 	right: 0;
 	padding-top: 0;
-	background-color: transparent;
+	background-color: rgba(255, 255, 255, 0.7);
+}
+
+.header-title-container {
+	text-align: center;
+}
+
+.bg-lp-content-img-container {
+	height: 250px;
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-size: cover;
+}
+
+.bg-lp-content-img-container h4,
+.bg-lp-content-img-container p {
+	color: white;
+	position: relative;
+	top: 50%;
+	transform: translateY(-50%);
+	text-align: center;
+}
+
+.bg-lp-content-img-container p {
+	background-color: rgba(255, 255, 255, 0.7);
+}
+
+.slide-control-right {
+	background-color: rgba(255, 255, 255, 0.7);
+	border-radius: 50%;
+	padding: 0.5rem;
+	padding-left: 0.75rem;
+}
+
+.slide-control-left {
+	background-color: rgba(255, 255, 255, 0.7);
+	border-radius: 50%;
+	padding: 0.5rem;
+	padding-right: 0.75rem;
 }
