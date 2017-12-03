@@ -60,6 +60,10 @@
 			$bg_img_url = get_field('bg_presse_header_image', 'option')['sizes']['fullwidth-image'];
 			$bg_img_txt = get_field('bg_presse_title', 'option');
 		endif;
+		if(is_post_type_archive('partner')):
+			$bg_img_url = get_field('bg_partner_header_image', 'option')['sizes']['fullwidth-image'];
+			$bg_img_txt = get_field('bg_partner_title', 'option');
+		endif;
 		?>
 		<div class="page-header-image mb-5" style="background-image: url('<?php echo $bg_img_url; ?>');">
 			<div class="header-title-container"><h2><?php echo $bg_img_txt; ?></h2></div>
