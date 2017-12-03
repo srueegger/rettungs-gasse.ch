@@ -3,7 +3,7 @@
 Plugin Name: Custom Post Types and Taxonomies
 Plugin URI: https://rueegger.me
 Description: Erstellt die Custom Post Type für rettungs-gasse.ch
-Version: 1.3
+Version: 1.4
 Author: Samuel Rüegger
 Author URI: https://rueegger.me
 */
@@ -216,6 +216,54 @@ function rg_cpttax_create_posttypes(){
 		'parent_slug' => 'edit.php?post_type=presse',
 	);
 	acf_add_options_sub_page($args);
+	
+	//Partner
+	$labels = array(
+		'name'					=> 'Partner',
+		'singular_name'			=> 'Partner',
+		'menu_name'				=> 'Partner',
+		'parent-item-colon'		=> 'Partner Eltern',
+		'all_items'				=> 'Alle Partner',
+		'view_item'				=> 'Partner ansehen',
+		'add_new_item'			=> 'Neuer Partner hinzufügen',
+		'add_new'				=> 'Hinzufügen',
+		'edit_item'				=> 'Partner bearbeiten',
+		'update_item'			=> 'Partner aktualisieren',
+		'search_items'			=> 'Partner suchen',
+		'not_found'				=> 'Keine Partner gefunden',
+		'not_found_in_trash'	=> 'Keine Partner im Papierkorb gefunden'
+	);
+	$supports = array(
+		'title',
+		'author',
+		'revisions',
+		'custom-fields',
+	);
+	$args = array(
+		'label'					=> 'partner',
+		'description'			=> 'Partnerverwaltung für rettungs-gasse.ch.',
+		'slug'					=> _x('partner', 'rg_custom'),
+		'labels'				=> $labels,
+		'supports'				=> $supports,
+		'hierarchical'			=> false,
+		'public'				=> false,
+		'show_ui'				=> true,
+		'show_in_menu'			=> true,
+		'show_in_nav_menus'		=> true,
+		'show_in_admin_bar'		=> true,
+		'show_in_rest'			=> true,
+		'can_export'			=> true,
+		'has_archive'			=> true,
+		'exclude_from_search'	=> true,
+		'publicly_queryable'	=> true,
+		'capability_type'		=> 'post',
+		'menu_icon'				=> 'dashicons-networking',
+		'rewrite'				=> array(
+			'slug' => _x('partner', 'rg_custom'),
+			'with_front' => false,
+		),
+	);
+	register_post_type( 'partner', $args );
 
 }
 add_action( 'init', 'rg_cpttax_create_posttypes' );
@@ -291,6 +339,32 @@ function create_rg_taxonomies() {
 				'new_item_name'	=> 'Neue Funktion',
 				'search_items'	=> 'Funktion suchen',
 				'not_found'		=> 'Keine Funktion gefunden'
+			),
+			'show_ui' => true,
+			'show_tagcloud' => false,
+			'hierarchical' => true,
+			'show_admin_column' => true,
+			'show_in_nav_menus' => false,
+		)
+	);
+	
+	//Partner Kategorien
+	register_taxonomy(
+		'partner_categories',
+		'partner',
+		array(
+			'labels' => array(
+				'name'			=> 'Kategorien',
+				'singular_name'	=> 'Kategorie',
+				'menu_name'		=> 'Kategorien',
+				'all_items'		=> 'Alle Kategorien',
+				'edit_item'		=> 'Kategorie bearbeiten',
+				'view_item'		=> 'Kategorie ansehen',
+				'update_item'	=> 'Kategorie aktualisieren',
+				'add_new_item'	=> 'Neue Kategorie hinzufügen',
+				'new_item_name'	=> 'Neue Kategorie',
+				'search_items'	=> 'Kategorien suchen',
+				'not_found'		=> 'Keine Kategorie gefunden'
 			),
 			'show_ui' => true,
 			'show_tagcloud' => false,

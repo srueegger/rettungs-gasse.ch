@@ -333,3 +333,11 @@ blockquote {
 	padding: 0.5rem;
 	padding-right: 0.75rem;
 }
+
+.partner-image {
+	max-width: 320px;
+}
+
+.partner-image:hover {
+	filter: blur(5px);
+}
