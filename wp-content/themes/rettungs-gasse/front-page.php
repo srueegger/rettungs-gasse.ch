@@ -32,9 +32,8 @@ if ( have_posts() ) : while ( have_posts() ):
 						$image = get_sub_field('image');
 						?>
 						<div style="background-image: url('<?php echo $image['sizes']['fullwidth-image']; ?>');" class="lp-bg-slide-item carousel-item<?php echo $active; ?>">
-							<!-- <img class="d-block w-100 no-border lp-main-slider" src="<?php echo $image['sizes']['fullwidth-image']; ?>" alt="<?php echo $counter; ?>. Slide"> -->
 							<?php if(!empty(get_sub_field('title')) or !empty(get_sub_field('slider_txt'))): ?>
-								<div class="carousel-caption d-none d-md-block">
+								<div class="carousel-caption lp-slider-caption d-none d-md-block">
 									<?php if(!empty(get_sub_field('title'))): ?>
 										<h2><?php the_sub_field('title'); ?></h2>
 									<?php endif; ?>
@@ -51,12 +50,11 @@ if ( have_posts() ) : while ( have_posts() ):
 					endwhile;
 					?>
 				</div>
-				<?php rg_print_slider_controls('lp-slider'); ?>
 			</div>
 		</div>
 		<?php while( have_rows('minislider_settings') ): the_row(); ?>
-		<div class="container-fluid mt-5">
-			<div id="lp-content-slider" class="carousel slide d-none d-lg-block" data-ride="carousel" data-interval="<?php the_sub_field('geschwindigkeit_des_mini_sliders'); ?>">
+		<div class="container-fluid mt-5 px-0">
+			<div id="lp-content-slider" class="carousel slide d-none d-lg-block p-0 mx-0" data-ride="carousel" data-interval="<?php the_sub_field('geschwindigkeit_des_mini_sliders'); ?>">
 				<div class="carousel-inner carousel-inner-lpcontentslider row mx-auto" role="listbox">
 					<?php
 					$counter = 1;
@@ -86,7 +84,6 @@ if ( have_posts() ) : while ( have_posts() ):
 					endwhile;
 					?>
 				</div>
-				<?php rg_print_slider_controls('lp-content-slider'); ?>
 			</div>
 			<div id="lp-content-slider-mobile" class="carousel slide d-block d-lg-none" data-ride="carousel" data-interval="<?php the_sub_field('geschwindigkeit_des_mini_sliders'); ?>">
 				<div class="carousel-inner carousel-inner-lpcontentslider-mobile row mx-auto" role="listbox">
@@ -129,7 +126,7 @@ if ( have_posts() ) : while ( have_posts() ):
 			$target = '_blank';
 		endif;
 		?>
-		<div id="lp-heros" class="d-inline-block mt-5" style="background-image: url('<?php echo $image_container['bg_image']['sizes']['fullwidth-image']; ?>');">
+		<div id="lp-heros" class="d-inline-block" style="background-image: url('<?php echo $image_container['bg_image']['sizes']['fullwidth-image']; ?>');">
 			<div class="container">
 				<div class="row heros-white">
 					<div class="col-12 text-center">

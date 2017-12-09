@@ -10,6 +10,14 @@
 		<meta name="description" content="<?php echo $metadatas['meta_beschreibung']; ?>">
 		<meta name="keywords" content="<?php echo $metadatas['meta_stichworte']; ?>">
 		<meta name="author" content="Samuel Rüegger - rueegger.me">
+		<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+		<link rel="icon" type="image/png" sizes="32x32" href="<?php echo THEME_IMAGES; ?>/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="<?php echo THEME_IMAGES; ?>/favicon-16x16.png">
+		<link rel="manifest" href="<?php echo THEME_IMAGES; ?>/manifest.json">
+		<link rel="mask-icon" href="<?php echo THEME_IMAGES; ?>/safari-pinned-tab.svg" color="#0e538e">
+		<meta name="msapplication-TileColor" content="#0e538e">
+		<meta name="msapplication-TileImage" content="<?php echo THEME_IMAGES; ?>/mstile-144x144.png">
+		<meta name="theme-color" content="#ffffff">
 		<?php wp_head(); ?>
 	</head>
 	<body <?php body_class(); ?>>
@@ -18,22 +26,37 @@
 			<img src="<?php echo $logo['sizes']['site-logo']; ?>" class="img-fluid site-logo no-border" alt="Logo">
 			<h1 class="sr-only"><?php echo get_option('blogname'); ?></h1>
 		</a>
-		<button id="mainmenu-trigger-menu" data-target="#rettungsgasse-mainmenu" data-toggle="collapse" class="hamburger hamburger--elastic d-lg-none ml-auto" type="button" aria-label="Menu" aria-controls="rettungsgasse-mainmenu">
+		<button id="mainmenu-trigger-menu" data-target="#rettungsgasse-mainmenu" data-toggle="collapse" class="hamburger hamburger--elastic d-lg-none mx-auto" type="button" aria-label="Menu" aria-controls="rettungsgasse-mainmenu">
 			<span class="hamburger-box">
 				<span class="hamburger-inner"></span>
 			</span>
 		</button>
 		<?php
 		wp_nav_menu(array(
-		'theme_location'	=> 'main-menu',
-		'container'			=> 'div',
-		'container_id'		=> 'rettungsgasse-mainmenu',
-		'container_class'	=> 'collapse navbar-collapse text-center',
-		'menu_id'			=> false,
-		'menu_class'		=> 'navbar-nav mx-auto',
-		'fallback_cb'		=> 'wp_bootstrap_navwalker::fallback',
-		'walker'			=> new wp_bootstrap_navwalker()
+			'theme_location'	=> 'main-menu',
+			'container'			=> 'div',
+			'container_id'		=> 'rettungsgasse-mainmenu',
+			'container_class'	=> 'collapse navbar-collapse text-center',
+			'menu_id'			=> false,
+			'menu_class'		=> 'navbar-nav mx-auto',
+			'fallback_cb'		=> 'wp_bootstrap_navwalker::fallback',
+			'walker'			=> new wp_bootstrap_navwalker()
 		));
+		$header_link = get_field('header_link', 'option');
+		if($header_link['header_link_has']):
+			$link = $header_link['header_link_link'];
+			$target = '_selft';
+			if(!empty($link['target'])):
+				$target = '_blank';
+			endif;
+			?>
+			<div class="ribbon-wrapper">
+				<div class="ribbon">
+					<a href="<?php echo $link['url']; ?>" target="<?php echo $target; ?>"><?php echo $link['title']; ?></a>
+				</div>
+			</div>
+			<?php
+		endif;
 		?>
 	</nav>
 	<?php

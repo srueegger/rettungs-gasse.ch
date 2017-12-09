@@ -3,7 +3,7 @@
 Plugin Name: Custom Post Types and Taxonomies
 Plugin URI: https://rueegger.me
 Description: Erstellt die Custom Post Type für rettungs-gasse.ch
-Version: 1.4.1
+Version: 1.5.1
 Author: Samuel Rüegger
 Author URI: https://rueegger.me
 */
@@ -42,6 +42,7 @@ function rg_cpttax_create_posttypes(){
 		'public'				=> false,
 		'show_ui'				=> true,
 		'show_in_menu'			=> true,
+		'menu_position'			=> 21,
 		'show_in_nav_menus'		=> false,
 		'show_in_admin_bar'		=> true,
 		'show_in_rest'			=> true,
@@ -88,6 +89,7 @@ function rg_cpttax_create_posttypes(){
 		'public'				=> false,
 		'show_ui'				=> true,
 		'show_in_menu'			=> true,
+		'menu_position'			=> 22,
 		'show_in_nav_menus'		=> false,
 		'show_in_admin_bar'		=> true,
 		'show_in_rest'			=> true,
@@ -133,6 +135,7 @@ function rg_cpttax_create_posttypes(){
 		'public'				=> true,
 		'show_ui'				=> true,
 		'show_in_menu'			=> true,
+		'menu_position'			=> 23,
 		'show_in_nav_menus'		=> true,
 		'show_in_admin_bar'		=> true,
 		'show_in_rest'			=> true,
@@ -192,6 +195,7 @@ function rg_cpttax_create_posttypes(){
 		'public'				=> false,
 		'show_ui'				=> true,
 		'show_in_menu'			=> true,
+		'menu_position'			=> 24,
 		'show_in_nav_menus'		=> true,
 		'show_in_admin_bar'		=> true,
 		'show_in_rest'			=> true,
@@ -249,6 +253,7 @@ function rg_cpttax_create_posttypes(){
 		'public'				=> false,
 		'show_ui'				=> true,
 		'show_in_menu'			=> true,
+		'menu_position'			=> 25,
 		'show_in_nav_menus'		=> true,
 		'show_in_admin_bar'		=> true,
 		'show_in_rest'			=> true,
@@ -273,6 +278,58 @@ function rg_cpttax_create_posttypes(){
 		'parent_slug' => 'edit.php?post_type=partner',
 	);
 	acf_add_options_sub_page($args);
+	
+	//Events
+	$labels = array(
+		'name'					=> 'Events',
+		'singular_name'			=> 'Event',
+		'menu_name'				=> 'Events',
+		'parent-item-colon'		=> 'Events Eltern',
+		'all_items'				=> 'Alle Events',
+		'view_item'				=> 'Event ansehen',
+		'add_new_item'			=> 'Neuer Event hinzufügen',
+		'add_new'				=> 'Hinzufügen',
+		'edit_item'				=> 'Event bearbeiten',
+		'update_item'			=> 'Event aktualisieren',
+		'search_items'			=> 'Event suchen',
+		'not_found'				=> 'Keine Events gefunden',
+		'not_found_in_trash'	=> 'Keine Events im Papierkorb gefunden'
+	);
+	$supports = array(
+		'title',
+		'editor',
+		'author',
+		'revisions',
+		'thumbnail',
+		'custom-fields',
+	);
+	$args = array(
+		'label'					=> 'events',
+		'description'			=> 'Eventverwaltung für rettungs-gasse.ch.',
+		'slug'					=> _x('events', 'rg_custom'),
+		'labels'				=> $labels,
+		'supports'				=> $supports,
+		'hierarchical'			=> false,
+		'public'				=> true,
+		'show_ui'				=> true,
+		'show_in_menu'			=> true,
+		'menu_position'			=> 20,
+		'show_in_nav_menus'		=> true,
+		'show_in_admin_bar'		=> true,
+		'show_in_rest'			=> true,
+		'can_export'			=> true,
+		'has_archive'			=> true,
+		'exclude_from_search'	=> true,
+		'publicly_queryable'	=> true,
+		'capability_type'		=> 'post',
+		'menu_icon'				=> 'dashicons-megaphone',
+		'rewrite'				=> array(
+			'slug' => _x('events', 'rg_custom'),
+			'with_front' => false,
+		),
+	);
+	register_post_type( 'events', $args );
+
 
 }
 add_action( 'init', 'rg_cpttax_create_posttypes' );

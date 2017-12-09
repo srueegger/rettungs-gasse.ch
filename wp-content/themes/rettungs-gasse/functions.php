@@ -66,6 +66,7 @@ function rg_startup_scripts() {
 		wp_register_script( "rettungsgasse-script", DIST_JS ."/theme.min.js", array('jquery-ui', 'jquery'), '1.0', true );
 	}
 	wp_enqueue_script( 'rettungsgasse-script' );
+	wp_enqueue_script( 'google-maps', 'https://maps.googleapis.com/maps/api/js?key=AIzaSyBNKcSZiv-2W3sMQ0uxPYDKl5wI6Fzlad0', '', '' );
 }
 add_action( "wp_enqueue_scripts", "rg_startup_scripts" );
 
@@ -74,7 +75,7 @@ add_action( "wp_enqueue_scripts", "rg_startup_scripts" );
  * 		ACF Init
  ***************************************/
 function rg_acf_init() {
- 	#acf_update_setting('google_api_key', 'AIzaSyCHQJgXa8qiFPJUqCL4Ia4iLWuvA1V6VMY');
+ 	acf_update_setting('google_api_key', 'AIzaSyBNKcSZiv-2W3sMQ0uxPYDKl5wI6Fzlad0');
  	$args = array(
 		'page_title' => 'Einstellungen für das rettungs-gasse.ch Wordpress Theme',
 		'menu_title' => 'Theme Einstellungen',
@@ -227,3 +228,12 @@ function rg_svg_mime_types($mimes) {
 	return $mimes;
 }
 add_filter('upload_mimes', 'rg_svg_mime_types');
+
+/***************************************
+ * Remove Some Item from Customizer
+ ***************************************/
+function rg_remove_styles_sections(){
+	global $wp_customize;
+	$wp_customize->remove_control('site_icon');
+}
+add_action( 'customize_register', 'rg_remove_styles_sections', 20 );

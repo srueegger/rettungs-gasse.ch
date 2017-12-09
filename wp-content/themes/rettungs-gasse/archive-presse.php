@@ -44,7 +44,7 @@ get_header();
 									$icon = 'fa-globe';
 								endif;
 								?>
-								<p class="text-right"><a href="<?php echo $link['url']; ?>" target="_blank"><i class="fa <?php echo $icon; ?> mr-2" aria-hidden="true"></i><?php the_field('link_txt'); ?></a></p>
+								<p class="text-right"><a href="<?php echo $link['url']; ?>" target="_blank"><i class="fa <?php echo $icon; ?> mr-2" aria-hidden="true"></i><?php the_field('presse_btn_readmore', 'option'); ?></a></p>
 							<?php endif; ?>
 						</div>
 					</div>
