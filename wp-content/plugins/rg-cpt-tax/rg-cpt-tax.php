@@ -330,6 +330,63 @@ function rg_cpttax_create_posttypes(){
 	);
 	register_post_type( 'events', $args );
 
+	//Add Settings Page to Post Type
+	$args = array(
+		'page_title' => 'Event Einstellungen',
+		'menu_title' => 'Einstellungen',
+		'menu_slug' => 'rg-events-settings',
+		'parent_slug' => 'edit.php?post_type=events',
+	);
+	acf_add_options_sub_page($args);
+
+	//Mitstreiter
+	$labels = array(
+		'name'					=> 'Mitstreiter',
+		'singular_name'			=> 'Mitstreiter',
+		'menu_name'				=> 'Mitstreiter',
+		'parent-item-colon'		=> 'Mitstreiter Eltern',
+		'all_items'				=> 'Alle Mitstreiter',
+		'view_item'				=> 'Mitstreiter ansehen',
+		'add_new_item'			=> 'Neuer Mitstreiter hinzufügen',
+		'add_new'				=> 'Hinzufügen',
+		'edit_item'				=> 'Mitstreiter bearbeiten',
+		'update_item'			=> 'Mitstreiter aktualisieren',
+		'search_items'			=> 'Mitstreiter suchen',
+		'not_found'				=> 'Keine Mitstreiter gefunden',
+		'not_found_in_trash'	=> 'Keine Mitstreiter im Papierkorb gefunden'
+	);
+	$supports = array(
+		'title',
+		'author',
+		'revisions',
+		'custom-fields',
+	);
+	$args = array(
+		'label'					=> 'mitstreiter',
+		'description'			=> 'Mitstreiterverwaltung für rettungs-gasse.ch.',
+		'slug'					=> _x('mitstreiter', 'rg_custom'),
+		'labels'				=> $labels,
+		'supports'				=> $supports,
+		'hierarchical'			=> false,
+		'public'				=> false,
+		'show_ui'				=> true,
+		'show_in_menu'			=> true,
+		'menu_position'			=> 25,
+		'show_in_nav_menus'		=> true,
+		'show_in_admin_bar'		=> true,
+		'show_in_rest'			=> true,
+		'can_export'			=> true,
+		'has_archive'			=> true,
+		'exclude_from_search'	=> true,
+		'publicly_queryable'	=> true,
+		'capability_type'		=> 'post',
+		'menu_icon'				=> 'dashicons-image-filter',
+		'rewrite'				=> array(
+			'slug' => _x('mitstreiter', 'rg_custom'),
+			'with_front' => false,
+		),
+	);
+	register_post_type( 'mitstreiter', $args );
 
 }
 add_action( 'init', 'rg_cpttax_create_posttypes' );
@@ -437,6 +494,32 @@ function create_rg_taxonomies() {
 			'hierarchical' => true,
 			'show_admin_column' => true,
 			'show_in_nav_menus' => false,
+		)
+	);
+
+	//Mitstreiter Kategorien
+	register_taxonomy(
+		'mitstreiter_categories',
+		'mitstreiter',
+		array(
+			'labels' => array(
+				'name'			=> 'Kategorien',
+				'singular_name'	=> 'Kategorie',
+				'menu_name'		=> 'Kategorien',
+				'all_items'		=> 'Alle Kategorien',
+				'edit_item'		=> 'Kategorie bearbeiten',
+				'view_item'		=> 'Kategorie ansehen',
+				'update_item'	=> 'Kategorie aktualisieren',
+				'add_new_item'	=> 'Neue Kategorie hinzufügen',
+				'new_item_name'	=> 'Neue Kategorie',
+				'search_items'	=> 'Kategorien suchen',
+				'not_found'		=> 'Keine Kategorie gefunden'
+			),
+			'show_ui' => true,
+			'show_tagcloud' => false,
+			'hierarchical' => true,
+			'show_admin_column' => true,
+			'show_in_nav_menus' => true,
 		)
 	);
 	

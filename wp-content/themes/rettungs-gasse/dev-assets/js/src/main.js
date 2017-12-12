@@ -132,7 +132,10 @@
 	$(document).ready(function(){
 		$('#single-event-map').each(function(){
 			map = new_map( $(this) );
-		}); 
+		});
+		$('#all-event-map').each(function(){
+			map = new_map( $(this) );
+		});
 	});
 
 })(jQuery);
