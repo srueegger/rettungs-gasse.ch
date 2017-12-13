@@ -69,7 +69,7 @@ get_header();
 			wp_reset_postdata();
 			?>
 		</div>
-		<?php if($counter > 0): ?>
+		<?php if($counter > 0 && get_field('event_show_map', 'option')): ?>
 			<div class="row">
 				<div id="all-event-map">
 					<?php
