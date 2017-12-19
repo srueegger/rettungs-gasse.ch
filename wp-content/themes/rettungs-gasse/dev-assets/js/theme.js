@@ -17051,6 +17051,9 @@ return exports;
 	});
 
 	//Activate Filter Content (Mitstreiter Archive)
-	var mixer = mixitup('.filter-content');
+	if($('.filter-content').length) {
+		var mixer = mixitup('.filter-content');
+	}
+	
 
 })(jQuery);

@@ -413,10 +413,20 @@ blockquote {
 	border: 2px solid $primary;
 }
 
+.mitstreiter-image {
+	min-height: 300px;
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center center;
+}
+
 .mitstreiter-caption {
-	right: 0;
-	left: 0;
-	bottom: 5px;
-	padding-bottom: 10px;
-	padding-top: 10px;
+	position: absolute;
+	width: 100%;
+	text-align: center;
+	padding: 1rem;
+	background-color: rgba(255, 255, 255, 0.7);
+	text-decoration: none;
+	top: 50%;
+	transform: translateY(-50%);
 }

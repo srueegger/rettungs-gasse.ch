@@ -1,6 +1,6 @@
 <?php
 if( function_exists('acf_add_local_field_group') ):
-	
+
 	acf_add_local_field_group(array(
 		'key' => 'group_5a24360c339b9',
 		'title' => 'Event Daten',
@@ -1586,54 +1586,6 @@ if( function_exists('acf_add_local_field_group') ):
 	));
 	
 	acf_add_local_field_group(array(
-		'key' => 'group_5a3016c104ef8',
-		'title' => 'Kategorie Mitstreiter',
-		'fields' => array(
-			array(
-				'key' => 'field_5a3016e60a579',
-				'label' => 'Bild hinzufügen',
-				'name' => 'mitstreiter_cat_image',
-				'type' => 'image',
-				'instructions' => '',
-				'required' => 1,
-				'conditional_logic' => 0,
-				'wrapper' => array(
-					'width' => '',
-					'class' => '',
-					'id' => '',
-				),
-				'return_format' => 'array',
-				'preview_size' => 'thumbnail',
-				'library' => 'all',
-				'min_width' => '',
-				'min_height' => '',
-				'min_size' => '',
-				'max_width' => '',
-				'max_height' => '',
-				'max_size' => '',
-				'mime_types' => '',
-			),
-		),
-		'location' => array(
-			array(
-				array(
-					'param' => 'taxonomy',
-					'operator' => '==',
-					'value' => 'mitstreiter_categories',
-				),
-			),
-		),
-		'menu_order' => 0,
-		'position' => 'normal',
-		'style' => 'default',
-		'label_placement' => 'top',
-		'instruction_placement' => 'label',
-		'hide_on_screen' => '',
-		'active' => 1,
-		'description' => '',
-	));
-	
-	acf_add_local_field_group(array(
 		'key' => 'group_5a30173c58615',
 		'title' => 'Mitstreiter Daten',
 		'fields' => array(
@@ -1684,6 +1636,109 @@ if( function_exists('acf_add_local_field_group') ):
 					'param' => 'post_type',
 					'operator' => '==',
 					'value' => 'mitstreiter',
+				),
+			),
+		),
+		'menu_order' => 0,
+		'position' => 'normal',
+		'style' => 'default',
+		'label_placement' => 'top',
+		'instruction_placement' => 'label',
+		'hide_on_screen' => '',
+		'active' => 1,
+		'description' => '',
+	));
+	
+	acf_add_local_field_group(array(
+		'key' => 'group_5a38f7932bafe',
+		'title' => 'Mitstreiter Einstellungen',
+		'fields' => array(
+			array(
+				'key' => 'field_5a38f7d60e7d0',
+				'label' => 'Header Einstellungen',
+				'name' => 'header_einstellungen',
+				'type' => 'group',
+				'instructions' => '',
+				'required' => 0,
+				'conditional_logic' => 0,
+				'wrapper' => array(
+					'width' => '',
+					'class' => '',
+					'id' => '',
+				),
+				'layout' => 'block',
+				'sub_fields' => array(
+					array(
+						'key' => 'field_5a38f7e60e7d1',
+						'label' => 'Hintergrundbild',
+						'name' => 'mitstreiter_bg_image',
+						'type' => 'image',
+						'instructions' => '',
+						'required' => 1,
+						'conditional_logic' => 0,
+						'wrapper' => array(
+							'width' => '',
+							'class' => '',
+							'id' => '',
+						),
+						'return_format' => 'array',
+						'preview_size' => 'thumbnail',
+						'library' => 'all',
+						'min_width' => '',
+						'min_height' => '',
+						'min_size' => '',
+						'max_width' => '',
+						'max_height' => '',
+						'max_size' => '',
+						'mime_types' => '',
+					),
+					array(
+						'key' => 'field_5a38f8010e7d2',
+						'label' => 'Titel im Header',
+						'name' => 'mitstreiter_title',
+						'type' => 'text',
+						'instructions' => '',
+						'required' => 1,
+						'conditional_logic' => 0,
+						'wrapper' => array(
+							'width' => '',
+							'class' => '',
+							'id' => '',
+						),
+						'default_value' => '',
+						'placeholder' => '',
+						'prepend' => '',
+						'append' => '',
+						'maxlength' => '',
+					),
+				),
+			),
+			array(
+				'key' => 'field_5a38f8bcd5cb5',
+				'label' => 'Text für Sortierung: "Alle"',
+				'name' => 'mitstreiter_txt_all',
+				'type' => 'text',
+				'instructions' => '',
+				'required' => 1,
+				'conditional_logic' => 0,
+				'wrapper' => array(
+					'width' => '',
+					'class' => '',
+					'id' => '',
+				),
+				'default_value' => '',
+				'placeholder' => '',
+				'prepend' => '',
+				'append' => '',
+				'maxlength' => '',
+			),
+		),
+		'location' => array(
+			array(
+				array(
+					'param' => 'options_page',
+					'operator' => '==',
+					'value' => 'rg-mitstreiter-settings',
 				),
 			),
 		),

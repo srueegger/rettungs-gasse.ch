@@ -55,9 +55,8 @@ get_header();
 					<?php if(!empty(get_field('url'))): ?>
 						<a href="<?php the_field('url'); ?>" target="_blank">
 					<?php endif; ?>
-					<img class="img-fluid" src="<?php echo $image['url']; ?>" alt="<?php the_title(); ?>">
-					<div class="carousel-caption mitstreiter-caption">
-						<?php the_title('<h6>', '</h6>'); ?>
+					<div style="background-image: url('<?php echo $image['sizes']['news-image']; ?>');" class="mitstreiter-image">
+						<?php the_title('<h6 class="mitstreiter-caption">', '</h6>'); ?>
 					</div>
 					<?php if(!empty(get_field('url'))): ?>
 						</a>
