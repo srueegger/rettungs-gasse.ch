@@ -430,3 +430,25 @@ blockquote {
 	top: 50%;
 	transform: translateY(-50%);
 }
+
+.lng-page {
+	height: 100vh;
+	background-repeat: no-repeat;
+	background-size: calc(100% + 50px);
+	background-position: center center;
+	z-index: 0;
+	position: fixed;
+	width: 100%;
+}
+
+.lng-content {
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	text-align: center;
+	padding: 5rem;
+	width: 100%;
+	left: 0;
+	right: 0;
+	background-color: rgba(255, 255, 255, 0.7);
+}
