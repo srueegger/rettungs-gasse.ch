@@ -19,6 +19,11 @@
 	text-decoration: none;
 	color: $primary;
 	border-bottom: 2px solid $primary;
+	transition: all 0.2s ease 0s;
+}
+
+.current-menu-parent.nav-link:hover {
+	border-bottom: none;
 }
 
 .wpml-ls-current-language {
@@ -59,7 +64,7 @@
 	background-position: center center;
 	background-size: cover;
 	filter: sepia(1);
-	background-attachment: fixed;
+	//background-attachment: fixed;
 }
 
 .page-header-image h2 {
@@ -117,4 +122,8 @@
 
 .ribbon:after {
 	right: 0;
+}
+
+.dropdown-toggle::after {
+	display: none;
 }

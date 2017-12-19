@@ -271,8 +271,12 @@ if ( have_posts() ) : while ( have_posts() ):
 								$active = ' active';
 							endif;
 							$image = get_field('image');
+							$bg = '';
+							if ($counter % 2 == 0):
+								$bg = ' bg-grau';
+							endif;
 							?>
-							<div class="carousel-item carousel-testimonial-item col-4<?php echo $active; ?>">
+							<div class="carousel-item carousel-testimonial-item col-4 py-2<?php echo $active.$bg; ?>">
 								<div class="testimonial-text">
 									<i class="fa fa-quote-left fa-4x float-left mr-3 text-primary" aria-hidden="true"></i>
 									<?php the_content(); ?>

@@ -12,8 +12,11 @@
 				</div>
 			</div>
 			<div class="row">
-				<div class="col-md-12 mt-3">
+				<div class="col-12 col-md-6">
 					<p><i class="fa fa-copyright" aria-hidden="true"></i> <?php echo date('Y'); ?> <?php the_field('footer_text', 'option'); ?> </p>
+				</div>
+				<div class="col-12 col-md-6">
+					<p class="text-right">SOCIAL MEDIA ICONS</p>
 				</div>
 			</div>
 		</div>

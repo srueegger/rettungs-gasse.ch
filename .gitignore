@@ -86,4 +86,5 @@ bower_components/
 wp-content/plugins/*
 !wp-content/plugins/rg-widgets/
 !wp-content/plugins/rg-cpt-tax/
+!wp-content/plugins/rg-shortcodes/
 *.swp

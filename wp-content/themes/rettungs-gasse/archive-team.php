@@ -8,7 +8,8 @@ get_header();
 			$post_classes = array(
 				'col-12',
 				'col-md-6',
-				'col-lg-4'
+				'col-lg-4',
+				'mb-4'
 			);
 			$counter = 1;
 			if ( have_posts() ) : while ( have_posts() ):
@@ -32,14 +33,22 @@ get_header();
 				</div>
 				<div id="team-desc-<?php echo $counter; ?>" class="col-12 team-archive-desc">
 					<div class="row">
-						<div class="col-12 col-md-6 d-none d-md-block">
-							<img src="<?php echo $image['sizes']['team-list-image']; ?>" class="img-fluid team-image">
+						<div class="col-12 col-md-4 d-none d-md-block">
+							<img src="<?php echo $image['sizes']['team-small-image']; ?>" class="img-fluid team-image">
 						</div>
-						<div class="col-12 col-md-6">
-							<?php
-							the_title('<h3>', '</h3>');
+						<div class="col-12 col-md-8">
+							<div class="row">
+								<div class="col-10">
+									<?php
+									the_title('<h3>', '</h3>');
+								echo '</div>';
+								echo '<div class="col-2"><p class="float-right"><a id="close-teamdesc-'.$counter.'" href="!#"><i class="fa fa-times fa-3x text-primary" aria-hidden="true"></i></a></p></div>';
+							echo '</div>';
 							echo '<p><strong>'.$terms_print.'</strong></p>';
 							the_field('more_txt');
+							if(!empty(get_field('zitat_der_person'))):
+								echo '<blockquote class="team-quote"><i class="fa fa-quote-right fa-2x text-primary mr-3" aria-hidden="true"></i><span style="font-size: 2rem;">'.get_field('zitat_der_person').'</span></blockquote>';
+							endif;
 							if(have_rows('links')):
 								echo '<ul class="list-inline">';
 								while(have_rows('links')):
@@ -54,7 +63,6 @@ get_header();
 								echo '</ul>';
 							endif;
 							?>
-							<p class="text-right"><a id="close-teamdesc-<?php echo $counter; ?>" href="!#"><i class="fa fa-times" aria-hidden="true"></i> Schliessen</a></p>
 						</div>
 					</div>
 				</div>

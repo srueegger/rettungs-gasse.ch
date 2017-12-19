@@ -19,3 +19,10 @@
 	background-color: transparent !important;
 	border-color: transparent !important;
 }
+
+.form-control:focus,
+.gform_fields input:focus,
+.gform_fields select:focus,
+.gform_fields textarea:focus {
+	border-color: transparent !important;
+}

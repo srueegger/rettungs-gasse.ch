@@ -34,6 +34,7 @@ add_image_size( 'news-image', 510, 9999, false );
 add_image_size( 'presse-image', 540, 9999, false );
 add_image_size( 'testimonial-image', 100, 100, true );
 add_image_size( 'team-list-image', 510, 510, true );
+add_image_size( 'team-small-image', 280, 280, true );
 add_image_size( 'container-image', 730, 9999, false );
 add_image_size( 'content-slider', 487, 9999, false );
 

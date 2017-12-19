@@ -8872,7 +8872,11 @@ a.text-dark:focus, a.text-dark:hover {
 .current-menu-parent {
   text-decoration: none;
   color: #014979;
-  border-bottom: 2px solid #014979; }
+  border-bottom: 2px solid #014979;
+  transition: all 0.2s ease 0s; }
+
+.current-menu-parent.nav-link:hover {
+  border-bottom: none; }
 
 .wpml-ls-current-language {
   border-left: 2px solid #014979;
@@ -8904,8 +8908,7 @@ a.text-dark:focus, a.text-dark:hover {
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
-  filter: sepia(1);
-  background-attachment: fixed; }
+  filter: sepia(1); }
 
 .page-header-image h2 {
   position: absolute;
@@ -8957,6 +8960,9 @@ a.text-dark:focus, a.text-dark:hover {
 .ribbon:after {
   right: 0; }
 
+.dropdown-toggle::after {
+  display: none; }
+
 h1, h2, h3, h4, h5, h6 {
   color: #014979; }
 
@@ -8968,10 +8974,12 @@ img {
 
 blockquote {
   border-left: 2px solid #014979;
+  padding: 1rem;
   padding-left: 2rem;
   font-style: italic;
   margin-top: 2rem;
-  margin-bottom: 2rem; }
+  margin-bottom: 2rem;
+  background-color: #dcdcdc; }
 
 .lp-news-meta {
   color: #014979; }
@@ -9075,7 +9083,6 @@ blockquote {
 
 #lp-content-slider {
   margin-top: -22%;
-  margin-bttom: 22%;
   background-color: rgba(1, 73, 121, 0.5); }
 
 .carousel-lpcontent-item {
@@ -9188,7 +9195,7 @@ blockquote {
   text-decoration: none; }
 
 .card-body {
-  background-color: transparent;
+  background-color: #dcdcdc;
   border-left: 2px solid #014979; }
 
 .team-image {
@@ -9196,7 +9203,6 @@ blockquote {
   width: 510px; }
 
 .team-image:hover {
-  ms-filter: blur(5px);
   filter: blur(5px); }
 
 .team-title {
@@ -9281,10 +9287,32 @@ blockquote {
 .team-archive-desc {
   display: none;
   margin-bottom: 1.5rem;
-  margin-top: 1.5rem; }
+  margin-top: 1.5rem;
+  border-top: 2px solid #014979;
+  border-bottom: 2px solid #014979;
+  padding-bottom: 1.5rem;
+  padding-top: 1.5rem;
+  background-color: #dcdcdc; }
 
 .alert p, .gfield_description p, .validation_error p, .validation_message p {
   margin: 0; }
+
+.bg-grau {
+  background-color: #dcdcdc; }
+
+.presse-container {
+  border: 2px solid #014979; }
+
+.team-quote {
+  background-color: #fff;
+  border: 2px solid #014979; }
+
+.mitstreiter-caption {
+  right: 0;
+  left: 0;
+  bottom: 5px;
+  padding-bottom: 10px;
+  padding-top: 10px; }
 
 #sidebar {
   border-left: 2px solid #014979; }
@@ -9362,6 +9390,12 @@ blockquote {
 
 .validation_message {
   background-color: transparent !important;
+  border-color: transparent !important; }
+
+.form-control:focus, .gform_fields input:focus, .gform_fields select:focus, .gform_fields textarea:focus,
+.gform_fields input:focus,
+.gform_fields select:focus,
+.gform_fields textarea:focus {
   border-color: transparent !important; }
 
 @media (max-width: 1199px) {

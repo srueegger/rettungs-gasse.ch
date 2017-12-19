@@ -138,4 +138,7 @@
 		});
 	});
 
+	//Activate Filter Content (Mitstreiter Archive)
+	var mixer = mixitup('.filter-content');
+
 })(jQuery);

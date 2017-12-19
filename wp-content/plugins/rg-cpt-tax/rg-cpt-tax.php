@@ -3,7 +3,7 @@
 Plugin Name: Custom Post Types and Taxonomies
 Plugin URI: https://rueegger.me
 Description: Erstellt die Custom Post Type für rettungs-gasse.ch
-Version: 1.5.1
+Version: 1.5.2
 Author: Samuel Rüegger
 Author URI: https://rueegger.me
 */
@@ -387,6 +387,15 @@ function rg_cpttax_create_posttypes(){
 		),
 	);
 	register_post_type( 'mitstreiter', $args );
+
+	//Add Settings Page to Post Type
+	$args = array(
+		'page_title' => 'Mitstreiter Einstellungen',
+		'menu_title' => 'Einstellungen',
+		'menu_slug' => 'rg-mitstreiter-settings',
+		'parent_slug' => 'edit.php?post_type=mitstreiter',
+	);
+	acf_add_options_sub_page($args);
 
 }
 add_action( 'init', 'rg_cpttax_create_posttypes' );
