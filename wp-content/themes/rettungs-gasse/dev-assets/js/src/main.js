@@ -143,6 +143,7 @@
 		var mixer = mixitup('.filter-content');
 	}
 
+	//Sprachauswahl Landing Page
 	$(document).ready(function() {
 		var movementStrength = 25;
 		var height = movementStrength / $(window).height();
@@ -154,6 +155,55 @@
 				  var newvalueY = height * pageY * -1 - 50;
 				  $('.lng-page').css("background-position", newvalueX+"px     "+newvalueY+"px");
 		});
+	});
+
+	//Count Up Some Numbers
+	$('.counter-box').each(function() {
+		var $this = $(this),
+			countTo = $this.attr('data-count');
+		$({ countNum: $this.text()}).animate({
+		  countNum: countTo
+		},
+		{
+		  duration: 8000,
+		  easing:'linear',
+		  step: function() {
+			$this.text(Math.floor(this.countNum));
+		},
+		complete: function() {
+			$this.text(this.countNum);
+		}
+		});
+	});
+
+	//Team Seite
+	$('.team-image').click(function() {
+		var teamID = $(this).attr('id').split('-');
+		$('.teamopen').slideToggle(500, 'linear');
+		$('.teamopen').removeClass('teamopen');
+		$('#team-desc-' + teamID[1]).addClass('teamopen');
+		$('#team-desc-' + teamID[1]).slideToggle(500, 'linear');
+	});
+
+	$('.close-team-desc').click(function() {
+		var teamID = $(this).attr('id').split('-');
+		$('#team-desc-' + teamID[3]).slideToggle(500, 'linear');
+	});
+
+	$('.team-layer').hover(function() {
+		var teamID = $(this).attr('id').split('-');
+		$('#team-caption-' + teamID[1]).addClass('d-block');
+	}, 
+	function () {
+		var teamID = $(this).attr('id').split('-');
+		$('#team-caption-' + teamID[1]).removeClass('d-block');
+	});
+	$('.team-caption').click(function() {
+		var teamID = $(this).attr('id').split('-');
+		$('.teamopen').slideToggle(500, 'linear');
+		$('.teamopen').removeClass('teamopen');
+		$('#team-desc-' + teamID[2]).addClass('teamopen');
+		$('#team-desc-' + teamID[2]).slideToggle(500, 'linear');
 	});
 
 })(jQuery);

@@ -96,6 +96,16 @@
 			$bg_img_url = $mitstreiter_settings['mitstreiter_bg_image']['sizes']['fullwidth-image'];
 			$bg_img_txt = $mitstreiter_settings['mitstreiter_title'];
 		endif;
+		if(is_post_type_archive('downloads')):
+			$bg_img_url = get_field('bg_downlaods_header_image', 'option')['sizes']['fullwidth-image'];
+			$bg_img_txt = get_field('bg_downloads_title', 'option');
+		endif;
+		if(is_tax('downloads_categories')):
+			$term = get_term(get_queried_object()->term_id, 'downloads_categories');
+			$image = get_field('header_bild', $term);
+			$bg_img_txt = $term->name;
+			$bg_img_url = $image['sizes']['fullwidth-image'];
+		endif;
 		?>
 		<div class="page-header-image mb-5" style="background-image: url('<?php echo $bg_img_url; ?>');">
 			<div class="header-title-container"><h2><?php echo $bg_img_txt; ?></h2></div>

@@ -3,7 +3,7 @@
 Plugin Name: Custom Post Types and Taxonomies
 Plugin URI: https://rueegger.me
 Description: Erstellt die Custom Post Type für rettungs-gasse.ch
-Version: 1.5.2
+Version: 1.6.5
 Author: Samuel Rüegger
 Author URI: https://rueegger.me
 */
@@ -397,6 +397,64 @@ function rg_cpttax_create_posttypes(){
 	);
 	acf_add_options_sub_page($args);
 
+	//Downloads
+	$labels = array(
+		'name'					=> 'Downloads',
+		'singular_name'			=> 'Download',
+		'menu_name'				=> 'Downloads',
+		'parent-item-colon'		=> 'Downloads Eltern',
+		'all_items'				=> 'Alle Downloads',
+		'view_item'				=> 'Download ansehen',
+		'add_new_item'			=> 'Neuer Download hinzufügen',
+		'add_new'				=> 'Hinzufügen',
+		'edit_item'				=> 'Download bearbeiten',
+		'update_item'			=> 'Download aktualisieren',
+		'search_items'			=> 'Download suchen',
+		'not_found'				=> 'Keine Download gefunden',
+		'not_found_in_trash'	=> 'Keine Download im Papierkorb gefunden'
+	);
+	$supports = array(
+		'title',
+		'author',
+		'revisions',
+		'custom-fields',
+	);
+	$args = array(
+		'label'					=> 'downloads',
+		'description'			=> 'Downloadsverwaltung für rettungs-gasse.ch.',
+		'slug'					=> _x('downloads', 'rg_custom'),
+		'labels'				=> $labels,
+		'supports'				=> $supports,
+		'hierarchical'			=> false,
+		'public'				=> false,
+		'show_ui'				=> true,
+		'show_in_menu'			=> true,
+		'menu_position'			=> 25,
+		'show_in_nav_menus'		=> true,
+		'show_in_admin_bar'		=> true,
+		'show_in_rest'			=> true,
+		'can_export'			=> true,
+		'has_archive'			=> true,
+		'exclude_from_search'	=> true,
+		'publicly_queryable'	=> true,
+		'capability_type'		=> 'post',
+		'menu_icon'				=> 'dashicons-download',
+		'rewrite'				=> array(
+			'slug' => _x('downloads', 'rg_custom'),
+			'with_front' => false,
+		),
+	);
+	register_post_type( 'downloads', $args );
+
+	//Add Settings Page to Post Type
+	$args = array(
+		'page_title' => 'Downloads Einstellungen',
+		'menu_title' => 'Einstellungen',
+		'menu_slug' => 'rg-downloads-settings',
+		'parent_slug' => 'edit.php?post_type=downloads',
+	);
+	acf_add_options_sub_page($args);
+
 }
 add_action( 'init', 'rg_cpttax_create_posttypes' );
 
@@ -529,6 +587,33 @@ function create_rg_taxonomies() {
 			'hierarchical' => true,
 			'show_admin_column' => true,
 			'show_in_nav_menus' => true,
+		)
+	);
+
+	//Downloads Kategorien
+	register_taxonomy(
+		'downloads_categories',
+		'downloads',
+		array(
+			'labels' => array(
+				'name'			=> 'Kategorien',
+				'singular_name'	=> 'Kategorie',
+				'menu_name'		=> 'Kategorien',
+				'all_items'		=> 'Alle Kategorien',
+				'edit_item'		=> 'Kategorie bearbeiten',
+				'view_item'		=> 'Kategorie ansehen',
+				'update_item'	=> 'Kategorie aktualisieren',
+				'add_new_item'	=> 'Neue Kategorie hinzufügen',
+				'new_item_name'	=> 'Neue Kategorie',
+				'search_items'	=> 'Kategorien suchen',
+				'not_found'		=> 'Keine Kategorie gefunden'
+			),
+			'show_ui' => true,
+			'show_tagcloud' => false,
+			'hierarchical' => true,
+			'show_admin_column' => true,
+			'show_in_nav_menus' => true,
+			'rewrite' => array('slug' => 'downloads')
 		)
 	);
 	

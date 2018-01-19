@@ -37,6 +37,7 @@ add_image_size( 'team-list-image', 510, 510, true );
 add_image_size( 'team-small-image', 280, 280, true );
 add_image_size( 'container-image', 730, 9999, false );
 add_image_size( 'content-slider', 487, 9999, false );
+add_image_size( 'download-image', 475, 9999, false);
 
 /***************************************
  * Add Wordpress Menus
@@ -57,7 +58,7 @@ function rg_startup_scripts() {
 	wp_deregister_script( 'jquery' );
 	wp_enqueue_script( 'jquery', DIST_JS."/jquery.min.js", null, '3.2.1', false );
 	wp_enqueue_script( 'jquery-migrate', DIST_JS."/jquery-migrate.min.js", array('jquery'), '1.4.1', false );
-	wp_enqueue_script( "jquery-ui", DIST_JS ."/jquery-ui.min.js", array('jquery'), '1.12.1', false );
+	wp_enqueue_script( "jquery-ui", DIST_JS ."/jquery-ui.min.js", array('jquery'), '1.12.1', true );
 	wp_enqueue_style( "jquery-ui", DIST_CSS . '/jquery-ui.min.css' );
 	if (WP_DEBUG) {
 		wp_enqueue_style( "rettungsgasse-style", DEV_CSS . '/theme.css' );
@@ -92,6 +93,7 @@ add_action( 'acf/init', 'rg_acf_init' );
  ***************************************/
 function rg_remove_menus() {
 	remove_menu_page( 'edit-comments.php' );
+	remove_menu_page( 'edit.php' );
 	#remove_menu_page( 'tools.php' );
 	if(!WP_DEBUG):
 		remove_menu_page( 'edit.php?post_type=acf-field-group' );

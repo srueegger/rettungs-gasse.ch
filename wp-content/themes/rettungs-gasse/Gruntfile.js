@@ -21,6 +21,7 @@ module.exports = function( grunt ) {
 					'node_modules/popper.js/dist/umd/popper.js',
                     'node_modules/bootstrap/dist/js/bootstrap.js',
                     'node_modules/mixitup/dist/mixitup.js',
+                    //'node_modules/countup.js/dist/countUp.js',
                     'dev-assets/js/src/main.js'
                 ],
                 dest: 'dev-assets/js/theme.js'

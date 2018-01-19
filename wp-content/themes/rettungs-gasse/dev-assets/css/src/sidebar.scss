@@ -5,16 +5,27 @@
 .widget-title {
 	background-color: $primary;
 	padding: 1rem;
-}
-
-.widget-title h5 {
-	color: $white;
-	padding: 0;
+	-webkit-hyphens: none !important;
+	    -ms-hyphens: none !important;
+	        hyphens: none !important;
+	h5 {
+		color: $white;
+		padding: 0;
+	}
 }
 
 .widget-content {
 	border: 1px solid $gray-400;
 	border-top: none;
+	.textwidget {
+		padding: 1rem;
+		ul{
+			padding-left: .75rem;
+			li {
+				margin-bottom: 1rem;
+			}
+		}
+	}
 }
 
 .widget-sidebar-container {
@@ -26,6 +37,9 @@
 	width: 100%;
 }
 
-.widget-content .textwidget {
-	padding: 1rem;
+#sidebar {
+	img,
+	.wp-video {
+		margin-top: 1rem;
+	}
 }

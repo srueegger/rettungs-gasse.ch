@@ -1,18 +1,29 @@
-#footer h4,
-#footer h5,
-#footer a {
-	color: $white;
-	text-decoration: none;
-}
-
-#footer .menu,
-#footer .widget_recent_entries ul {
-	list-style-type: none;
-	padding: 0;
-}
-
-#footer .menu li a {
-	color: $white;
+#footer {
+	h4,
+	h5,
+	a {
+		color: $white;
+		text-decoration: none;
+	}
+	.menu {
+		list-style-type: none;
+		padding: 0;
+		li {
+			a {
+				color: $white;
+			}
+		}
+	}
+	.widget_recent_entries {
+		ul {
+			list-style-type: none;
+			padding: 0;
+		}
+	}
+	@include media-breakpoint-down(lg) {
+		padding-top: 0 !important;
+		padding-bottom: 0 !important;
+	}
 }
 
 .rg_widget_new_posts p {

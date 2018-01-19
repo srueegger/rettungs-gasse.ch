@@ -7,8 +7,8 @@ get_header();
 			<?php
 			$post_classes = array(
 				'col-12',
-				'col-md-6',
-				'col-lg-4',
+				'col-md-4',
+				'col-lg-3',
 				'mb-4'
 			);
 			$counter = 1;
@@ -16,22 +16,7 @@ get_header();
 				the_post();
 				$image = get_field('image');
 				?>
-				<div <?php post_class($post_classes); ?>>
-					<div id="team-img-<?php echo $counter; ?>">
-						<a id="team-link-<?php echo $counter; ?>" href="!#"><img class="img-fluid team-image" src="<?php echo $image['sizes']['team-list-image']; ?>" alt="<?php the_title(); ?>"></a>
-						<?php
-						echo '<div id="team-caption-'.$counter.'" class="carousel-caption team-caption d-block d-lg-none">';
-						the_title('<h3 class="team-title"><a href="'.get_the_permalink().'">', '</a></h3>');
-						$terms = get_the_terms($post, 'team_functions');
-						$terms_print = '';
-						foreach($terms as $term):
-							$terms_print .= $term->name.' ';
-						endforeach;
-						echo '<p class="team-function">'.$terms_print.'</p></div>';
-						?>
-					</div>
-				</div>
-				<div id="team-desc-<?php echo $counter; ?>" class="col-12 team-archive-desc">
+				<div id="team-desc-<?php the_ID(); ?>" class="container team-archive-desc">
 					<div class="row">
 						<div class="col-12 col-md-4 d-none d-md-block">
 							<img src="<?php echo $image['sizes']['team-small-image']; ?>" class="img-fluid team-image">
@@ -42,7 +27,7 @@ get_header();
 									<?php
 									the_title('<h3>', '</h3>');
 								echo '</div>';
-								echo '<div class="col-2"><p class="float-right"><a id="close-teamdesc-'.$counter.'" href="!#"><i class="fa fa-times fa-3x text-primary" aria-hidden="true"></i></a></p></div>';
+								echo '<div class="col-2"><p class="float-right"><i id="close-team-desc-'.get_the_ID().'" class="fa fa-times fa-3x text-primary close-team-desc" aria-hidden="true"></i></p></div>';
 							echo '</div>';
 							echo '<p><strong>'.$terms_print.'</strong></p>';
 							the_field('more_txt');
@@ -58,7 +43,7 @@ get_header();
 									if(!empty($link['target'])):
 										$target = '_blank';
 									endif;
-									echo '<li class="list-inline-item mr-4"><a href="'.$link['url'].'" target="'.$target.'"><i class="fa '.get_sub_field('icon').' fa-5x" aria-hidden="true"></i></a></li>';
+									echo '<li class="list-inline-item mr-4"><a href="'.$link['url'].'" target="'.$target.'"><i class="fa '.get_sub_field('icon').' fa-2x" aria-hidden="true"></i></a></li>';
 								endwhile;
 								echo '</ul>';
 							endif;
@@ -66,38 +51,22 @@ get_header();
 						</div>
 					</div>
 				</div>
-				<script type="text/javascript">
-					(function($) {
-						$('#team-link-<?php echo $counter; ?>').on("click", function(e) {
-							$('#team-desc-<?php echo $counter; ?>').slideToggle(500, 'linear');
-							return false;
-						});
-
-						$('#team-caption-<?php echo $counter; ?>').on("click", function(e) {
-							$('#team-desc-<?php echo $counter; ?>').slideToggle(500, 'linear');
-							return false;
-						});
-
-						$('#close-teamdesc-<?php echo $counter; ?>').on("click", function(e) {
-							$('#team-desc-<?php echo $counter; ?>').slideToggle(500, 'linear');
-							return false;
-						});
-						
-						$('#team-img-<?php echo $counter; ?>').hover(function () {
-							$('#team-caption-<?php echo $counter; ?>').toggleClass('d-lg-none');
-						}, 
-						function () {
-							$('#team-caption-<?php echo $counter; ?>').toggleClass('d-lg-none');
-						});
-
-						/*$('#team-caption-<?php echo $counter; ?>').hover(function () {
-							$('#team-img-<?php echo $counter; ?>').css('filter','blur(5px)');
-						}, 
-						function () {
-							$('#team-img-<?php echo $counter; ?>').css('filter','');
-						});*/
-					})(jQuery);
-				</script>
+				<div <?php post_class($post_classes); ?>>
+					<div id="team-img-<?php the_ID(); ?>">
+						<div id="layer-<?php the_ID(); ?>" class="team-layer"><img id="photo-<?php the_ID(); ?>" class="img-fluid team-image" src="<?php echo $image['sizes']['team-list-image']; ?>" alt="<?php the_title(); ?>">
+						<?php
+						echo '<div id="team-caption-'.get_the_ID().'" class="carousel-caption team-caption">';
+						the_title('<h3 class="team-title">', '</h3>');
+						$terms = get_the_terms($post, 'team_functions');
+						$terms_print = '';
+						foreach($terms as $term):
+							$terms_print .= $term->name.' ';
+						endforeach;
+						echo '<p class="team-function">'.$terms_print.'</p></div>';
+						?>
+						</div>
+					</div>
+				</div>
 				<?php
 				$counter++;
 				endwhile; endif;
