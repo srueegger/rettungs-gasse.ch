@@ -6,7 +6,7 @@ get_header();
 		<div class="row">
 			<div class="col-12">
 				<div class="controls text-center">
-					<button type="button" class="btn btn-primary mr-1" data-filter="all"><?php the_field('mitstreiter_txt_all', 'option'); ?></button>
+					<button type="button" data-mixitup-control class="btn btn-primary mr-1" data-filter="all"><?php the_field('mitstreiter_txt_all', 'option'); ?></button>
 					<?php
 					$args = array(
 						'taxonomy' => 'mitstreiter_categories',
@@ -22,7 +22,7 @@ get_header();
 						if($counter == $count_terms):
 							$class = '';
 						endif;
-						echo '<button type="button" class="btn btn-primary'.$class.'" data-filter=".'.$term->slug.'">'.$term->name.'</button>';
+						echo '<button data-mixitup-control type="button" class="btn btn-primary'.$class.'" data-filter=".'.$term->slug.'">'.$term->name.'</button>';
 						$counter++;
 					endforeach;
 					?>
@@ -37,7 +37,7 @@ get_header();
 				'order' => 'ASC',
 				'post_type' => 'mitstreiter',
 				'post_status' => 'publish',
-				'suppress_filters' => true,
+				'suppress_filters' => false,
 			);
 			$mitstreiter = get_posts($args);
 			global $post;

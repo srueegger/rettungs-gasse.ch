@@ -9,7 +9,7 @@
     "email": "samuel@rueegger.me"
   },
   "devDependencies": {
-    "grunt": "^1.0.1",
+    "grunt": "^1.0.2",
     "grunt-contrib-concat": "^1.0.1",
     "grunt-contrib-cssmin": "^2.2.1",
     "grunt-contrib-jshint": "^1.1.0",
@@ -17,13 +17,14 @@
     "grunt-contrib-uglify": "^3.3.0",
     "grunt-contrib-watch": "^1.0.0",
     "matchdep": "^2.0.0",
-    "bootstrap": "^4.0.0-beta.3",
-    "popper.js": "^1.12.6",
-    "jquery": "^3.2.1",
+    "bootstrap": "^4.0.0",
+    "popper.js": "^1.12.9",
+    "jquery": "^3.3.1",
     "jquery-ui": "^1.12.1",
     "font-awesome-sass": "^4.7.0",
-    "hamburgers": "^0.9.1",
+    "hamburgers": "^0.9.3",
     "mixitup": "^3.2.2",
-    "countup.js": "^1.9.3"
+    "countup.js": "^1.9.3",
+    "font-awesome-animation": "^0.2.0"
   }
 }

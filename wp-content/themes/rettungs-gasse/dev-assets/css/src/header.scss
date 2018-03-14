@@ -4,8 +4,24 @@
 	border-bottom: 2px solid $primary;
 }
 
-.site-logo {
-	max-width: 115px;
+.navbar-nav {
+	@include media-breakpoint-down(lg) {
+		margin-top: 4rem;
+	}
+}
+
+.site-logo,
+.site-logo-mobile {
+	max-width: 250px;
+	z-index: 999;
+	position: absolute;
+	top: 15px;
+	-webkit-transition: all .5s ease 0s;
+	transition: all .5s ease 0s;
+}
+
+.site-logo-mobile {
+	max-width: 150px;
 }
 
 .nav-link {
@@ -69,7 +85,7 @@
 }
 
 .dropdown-menu.show {
-	background-color: rgba(255, 255, 255, 0.7);
+	background-color: rgba(255, 255, 255, 0.9);
 	border-color: $primary;
 	@include media-breakpoint-down(lg) {
 		border: none;

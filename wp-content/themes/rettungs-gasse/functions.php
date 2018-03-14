@@ -14,9 +14,6 @@ define( 'DIST_JS', THEME_URI . '/dist-assets/js' );
  * Include helpers
  ***************************************/
 require_once 'inc/wordpress-bootstrap-navwalker.php';
-if(!WP_DEBUG):
-	require_once 'inc/acf.php';
-endif;
 
 /***************************************
  * 		Theme Support
@@ -30,14 +27,16 @@ add_theme_support( 'post-thumbnails' );
  ***************************************/
 add_image_size( 'site-logo', 115, 9999, false );
 add_image_size( 'fullwidth-image', 1920, 9999, false );
-add_image_size( 'news-image', 510, 9999, false );
+add_image_size( 'news-image', 510, 263, true );
 add_image_size( 'presse-image', 540, 9999, false );
 add_image_size( 'testimonial-image', 100, 100, true );
+add_image_size( 'testimonial-image-big', 255, 255, true );
 add_image_size( 'team-list-image', 510, 510, true );
 add_image_size( 'team-small-image', 280, 280, true );
 add_image_size( 'container-image', 730, 9999, false );
 add_image_size( 'content-slider', 487, 9999, false );
 add_image_size( 'download-image', 475, 9999, false);
+add_image_size( 'team-rechteck-container', 475, 271, true );
 
 /***************************************
  * Add Wordpress Menus
@@ -53,7 +52,6 @@ add_action( 'after_setup_theme', 'rg_lindahls_menu' );
  * 		Enqueue scripts and styles.
  ***************************************/
 function rg_startup_scripts() {
-	global $wp_query;
 	wp_enqueue_style( "rg-google-font", "https://fonts.googleapis.com/css?family=Lato:300i,400,400i,700,700i,900,900i" );
 	wp_deregister_script( 'jquery' );
 	wp_enqueue_script( 'jquery', DIST_JS."/jquery.min.js", null, '3.2.1', false );
@@ -69,6 +67,7 @@ function rg_startup_scripts() {
 	}
 	wp_enqueue_script( 'rettungsgasse-script' );
 	wp_enqueue_script( 'google-maps', 'https://maps.googleapis.com/maps/api/js?key=AIzaSyBNKcSZiv-2W3sMQ0uxPYDKl5wI6Fzlad0', '', '' );
+	wp_enqueue_script( 'raisenow-widget', 'https://widget.raisenow.com/widgets/lema/helfe-077a/js/dds-init-widget-'.ICL_LANGUAGE_CODE.'.js', array('jquery'), true );
 }
 add_action( "wp_enqueue_scripts", "rg_startup_scripts" );
 
@@ -95,9 +94,6 @@ function rg_remove_menus() {
 	remove_menu_page( 'edit-comments.php' );
 	remove_menu_page( 'edit.php' );
 	#remove_menu_page( 'tools.php' );
-	if(!WP_DEBUG):
-		remove_menu_page( 'edit.php?post_type=acf-field-group' );
-	endif;
 }
 add_action( 'admin_menu', 'rg_remove_menus' );
 
@@ -137,15 +133,6 @@ function rg_widgets_init() {
 		'id' => 'sidebar-footer-1',
 		'description' => 'Diese Sidebar zeigt Widgets im linken Footer an.',
 		'before_widget' => '<div class="widget-container footer-widet-column-1 %2$s">',
-		'after_widget' => '</div>',
-		'before_title' => '<h4 class="my-4">',
-		'after_title' => '</h4>',
-	));
-	register_sidebar( array(
-		'name' => 'Footer Sidebar 2',
-		'id' => 'sidebar-footer-2',
-		'description' => 'Diese Sidebar zeigt Widgets im mittleren Footer an.',
-		'before_widget' => '<div class="widget-container footer-widet-column-2 %2$s">',
 		'after_widget' => '</div>',
 		'before_title' => '<h4 class="my-4">',
 		'after_title' => '</h4>',
@@ -240,3 +227,39 @@ function rg_remove_styles_sections(){
 	$wp_customize->remove_control('site_icon');
 }
 add_action( 'customize_register', 'rg_remove_styles_sections', 20 );
+
+/***************************************
+ * Save Testimonial from Gravityform
+ ***************************************/
+function rg_save_testimonial_post( $entry, $form ) {
+	$title = rgar($entry, '1.3').' '.rgar($entry, '1.6');
+	$terms = rgar($entry, '7');
+	$args = array(
+		'post_author' => 2,
+		'post_content' => rgar($entry, '3'),
+		'post_title' => $title,
+		'post_status' => 'draft',
+		'post_type' => 'testimonials',
+	);
+	$filename = rgar($entry, '8');
+	$filetype = wp_check_filetype( basename( $filename ), null );
+	$attachment = array(
+		'guid' => $wp_upload_dir['url'] . '/' . basename( $filename ), 
+		'post_mime_type' => $filetype['type'],
+		'post_title' => preg_replace( '/\.[^.]+$/', '', basename( $filename ) ),
+		'post_content' => '',
+		'post_status' => 'inherit'
+	);
+	$attach_id = wp_insert_attachment( $attachment, $filename );
+	$post_id = wp_insert_post($args);
+	update_field('job', rgar($entry, '2'), $post_id);
+	update_field('image', $attach_id, $post_id);
+	preg_match_all('!\d+!', $terms, $matches);
+	$term_ids = $matches[0];
+	$term_ids = array_map('intval', $term_ids);
+	$term_ids = array_unique($term_ids);
+	if(!empty($matches)):
+		wp_set_object_terms($post_id, $term_ids, 'testimonials_categories');
+	endif;
+}
+add_action( 'gform_after_submission_5', 'rg_save_testimonial_post', 10, 2 );

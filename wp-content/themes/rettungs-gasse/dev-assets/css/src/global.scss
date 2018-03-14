@@ -40,7 +40,7 @@ blockquote {
 	background-position: center center;
 	background-repeat: no-repeat;
 	background-size: cover;
-	background-attachment: fixed;
+	//background-attachment: fixed;
 }
 
 .carousel-control-prev,
@@ -350,9 +350,38 @@ blockquote {
 	padding-right: 0.75rem;
 }
 
+.home {
+	.lp-news-image {
+		img {
+			border: none !important;
+		}
+	}
+}
+
 .partner-image {
-	max-width: 320px;
+	max-width: 180px;
 	border: none;
+	opacity: .5;
+	&:hover {
+		opacity: 1;
+	}
+}
+
+.partner_categories-premium-partner {
+	img {
+		max-width: 250px !important;
+	}
+}
+
+#lp-slider {
+	.carousel-indicators {
+		bottom: 60px;
+		li {
+			width: 20px;
+			height: 20px;
+			border-radius: 50%;
+		}
+	}
 }
 
 .lp-slider-caption {
@@ -389,6 +418,7 @@ blockquote {
 
 .team-archive-desc {
 	display: none;
+	position: relative;
 	margin-bottom: 1.5rem;
 	margin-top: 1.5rem;
 	border-top: 2px solid $primary;
@@ -396,6 +426,9 @@ blockquote {
 	padding-bottom: 1.5rem;
 	padding-top: 1.5rem;
 	background-color: $grau;
+	z-index: 1000;
+	-webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .alert {
@@ -422,6 +455,12 @@ blockquote {
 	background-repeat: no-repeat;
 	background-size: cover;
 	background-position: center center;
+	-webkit-filter: blur(5px);
+	        filter: blur(5px);
+	&:hover {
+		-webkit-filter: none;
+		        filter: none;
+	}
 }
 
 .mitstreiter-caption {
@@ -522,4 +561,20 @@ blockquote {
 			}
 		}
 	}
+}
+
+.front-scoll-button-container {
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	text-align: center;
+	i {
+		font-size: 3rem;
+		color: $white;
+	}
+}
+
+.new-test-image {
+	max-width: 255px;
+	max-height: 255px;
 }

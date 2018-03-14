@@ -140,7 +140,28 @@
 
 	//Activate Filter Content (Mitstreiter Archive)
 	if($('.filter-content').length) {
-		var mixer = mixitup('.filter-content');
+		var containerEl = document.querySelector('.filter-content');
+		var mixer = mixitup(containerEl, {
+			animation: {
+				enable: true
+			},
+			selectors: {
+				control: '[data-mixitup-control]'
+			}
+		});
+	}
+
+	//Activate Filter Testimonials Page
+	if($('.filter-content-testimonials').length) {
+		var containerEl = document.querySelector('.filter-content-testimonials');
+		var mixer = mixitup(containerEl, {
+			animation: {
+				enable: true
+			},
+			selectors: {
+				control: '[data-mixitup-control]'
+			}
+		});
 	}
 
 	//Sprachauswahl Landing Page
@@ -177,13 +198,13 @@
 	});
 
 	//Team Seite
-	$('.team-image').click(function() {
+	/*$('.team-image').click(function() {
 		var teamID = $(this).attr('id').split('-');
 		$('.teamopen').slideToggle(500, 'linear');
 		$('.teamopen').removeClass('teamopen');
 		$('#team-desc-' + teamID[1]).addClass('teamopen');
 		$('#team-desc-' + teamID[1]).slideToggle(500, 'linear');
-	});
+	});*/
 
 	$('.close-team-desc').click(function() {
 		var teamID = $(this).attr('id').split('-');
@@ -198,12 +219,64 @@
 		var teamID = $(this).attr('id').split('-');
 		$('#team-caption-' + teamID[1]).removeClass('d-block');
 	});
-	$('.team-caption').click(function() {
+	
+	/*$('.team-caption').click(function() {
 		var teamID = $(this).attr('id').split('-');
 		$('.teamopen').slideToggle(500, 'linear');
-		$('.teamopen').removeClass('teamopen');
+		$('.teamopen' + teamID[2]).removeClass('teamopen');
 		$('#team-desc-' + teamID[2]).addClass('teamopen');
 		$('#team-desc-' + teamID[2]).slideToggle(500, 'linear');
+	});*/
+
+	//Frontpage Scroll to Arrow
+	$(document).ready(function(){
+		$('#fp-scroll-button').click(function() {
+			$('html, body').animate({
+				scrollTop: $('#scrolltarget').offset().top + (-125)
+			}, 2000);
+		});
 	});
 
+	//Logo beim Scrollen verkleinern
+	$(document).ready(function(){
+		$(window).scroll(function(){
+			if($(this).scrollTop()>=30){
+				$('#header-logo').attr('style','width: 150px !important;');
+			} else if ($(this).scrollTop()<30) {
+				$('#header-logo').attr('style','width: 250px !important');
+			}
+		})
+	});
+
+	//Testimonial Modal get Informations
+	$('#testimonialModal').on('show.bs.modal', function (event) {
+		var button = $(event.relatedTarget);
+		var name = button.data('testname');
+		var content = button.data('txtcontent');
+		var img = button.data('img');
+		var job = button.data('job');
+		var modal = $(this);
+		modal.find('.modal-title').text('Testimonial von ' + name);
+		modal.find('#modal-txt-content').html(content);
+		modal.find('#testimonial-image-modal').prop('alt', name);
+		modal.find('#testimonial-image-modal').prop('src', img);
+		modal.find('#testimonial-job').text(job);
+	});
+
+	//Team Modal get Informations
+	$('#teamModal').on('show.bs.modal', function (event) {
+		var button = $(event.relatedTarget);
+		var name = button.data('teamname');
+		var img = button.data('img');
+		var terms = button.data('terms');
+		var quote = button.data('quote');
+		var txt = button.data('txt');
+		var modal = $(this);
+		modal.find('.modal-title').text(name);
+		modal.find('#team-image-modal').prop('alt', name);
+		modal.find('#team-image-modal').prop('src', img);
+		modal.find('.term-titles').text(terms);
+		modal.find('.team-quote-insert').html(quote);
+		modal.find('.team-txt').html(txt);
+	});
 })(jQuery);

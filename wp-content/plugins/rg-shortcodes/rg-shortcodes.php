@@ -24,3 +24,9 @@ function rg_show_circles($atts = array(), $content = '') {
 	return ob_get_clean();
 }
 add_shortcode( 'show_circles', 'rg_show_circles' );
+
+function rg_donate_widget($atts = array(), $content = '') {
+	$output = '<div class="dds-widget-container" data-widget="lema"></div>';
+	return $output;
+}
+add_shortcode( 'spenden_widget', 'rg_donate_widget' );

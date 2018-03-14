@@ -25,3 +25,42 @@
 .gform_fields textarea:focus {
 	border-color: transparent !important;
 }
+
+.gform_footer {
+	img {
+		border: none !important;
+	}
+}
+
+#lema-container.lema-container {
+	margin-bottom: 2rem !important;
+	font-family: $font-family-base !important;
+	.lema-button {
+		@extend .btn;
+		@extend .btn-primary;
+		background-color: $primary !important;
+		color: $white !important;
+		&:hover {
+			background-color: #013253 !important;
+		}
+	}
+	.lema-security,
+	.lema-step-header-text {
+		font-family: $font-family-base !important;
+	}
+	.lema-step-number-text {
+		background: $primary !important;
+	}
+	.lema-step-header-text,
+	.lema-amount-box-amount {
+		color: $primary !important;
+	}
+	.lema-amount-box.lema-active {
+		border-color: $primary !important;
+	}
+	input {
+		&:focus {
+			border-color: $primary !important;
+		}
+	}
+}

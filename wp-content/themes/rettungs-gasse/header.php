@@ -23,10 +23,11 @@
 	<body <?php body_class(); ?>>
 	<nav class="navbar navbar-expand-xl navbar-primary fixed-top">
 		<a class="navbar-brand" href="<?php echo HOME_URI; ?>">
-			<img src="<?php echo $logo['sizes']['site-logo']; ?>" class="img-fluid site-logo no-border" alt="Logo">
+			<img id="header-logo" src="<?php echo $logo['url']; ?>" class="img-fluid site-logo no-border d-none d-lg-inline-block" alt="Logo">
+			<img id="header-logo-mobile" src="<?php echo $logo['url']; ?>" class="img-fluid site-logo-mobile no-border d-inline-block d-lg-none" alt="Logo">
 			<h1 class="sr-only"><?php echo get_option('blogname'); ?></h1>
 		</a>
-		<button id="mainmenu-trigger-menu" data-target="#rettungsgasse-mainmenu" data-toggle="collapse" class="hamburger hamburger--elastic d-lg-none mx-auto" type="button" aria-label="Menu" aria-controls="rettungsgasse-mainmenu">
+		<button id="mainmenu-trigger-menu" data-target="#rettungsgasse-mainmenu" data-toggle="collapse" class="hamburger hamburger--elastic mx-auto" type="button" aria-label="Menu" aria-controls="rettungsgasse-mainmenu">
 			<span class="hamburger-box">
 				<span class="hamburger-inner"></span>
 			</span>
@@ -92,7 +93,7 @@
 			$bg_img_txt = get_field('bg_events_title', 'option');
 		endif;
 		if(is_post_type_archive('mitstreiter')):
-			$mitstreiter_settings = get_field('header_einstellungen', 'option');
+			$mitstreiter_settings = get_field('mitstreiter_header_einstellungen', 'option');
 			$bg_img_url = $mitstreiter_settings['mitstreiter_bg_image']['sizes']['fullwidth-image'];
 			$bg_img_txt = $mitstreiter_settings['mitstreiter_title'];
 		endif;
