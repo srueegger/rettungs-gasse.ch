@@ -263,3 +263,16 @@ function rg_save_testimonial_post( $entry, $form ) {
 	endif;
 }
 add_action( 'gform_after_submission_5', 'rg_save_testimonial_post', 10, 2 );
+
+/***************************************
+*	 Set String Translation
+***************************************/
+function __rg_trans($value, $echo = true) {
+	icl_register_string('rettungsgasse-wptheme', $value, $value);
+	$result = icl_t('rettungsgasse-wptheme', $value, $value);
+	if ($echo):
+		echo $result;
+		return;
+	endif;
+	return $result;
+}

@@ -11,7 +11,6 @@ get_header();
 				'col-lg-4',
 				'mb-4'
 			);
-			$counter = 1;
 			if ( have_posts() ) : while ( have_posts() ):
 				the_post();
 				$image = get_field('image');
@@ -38,7 +37,6 @@ get_header();
 					</div>
 				</a>
 				<?php
-				$counter++;
 				endwhile; endif;
 			?>
 		</div>
@@ -78,7 +76,7 @@ get_header();
 				</div>
 			</div>
 			<div class="modal-footer">
-				<button type="button" class="btn btn-primary" data-dismiss="modal">Schliessen</button>
+				<button type="button" class="btn btn-primary" data-dismiss="modal"><?php __rg_trans('Close'); ?></button>
 			</div>
 			</div>
 		</div>

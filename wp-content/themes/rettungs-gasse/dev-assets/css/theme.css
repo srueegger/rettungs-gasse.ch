@@ -10495,6 +10495,13 @@ blockquote {
 
 .footer-widet-column-3 {
   text-align: left; }
+  .footer-widet-column-3 .btn-primary, .footer-widet-column-3 #lema-container.lema-container .lema-button, #lema-container.lema-container .footer-widet-column-3 .lema-button {
+    background-color: #fff;
+    color: #014979 !important; }
+    .footer-widet-column-3 .btn-primary:hover, .footer-widet-column-3 #lema-container.lema-container .lema-button:hover, #lema-container.lema-container .footer-widet-column-3 .lema-button:hover {
+      color: #fff !important;
+      background-color: #014979;
+      border-color: #fff; }
 
 .gform_wrapper.gf_browser_chrome .gfield_checkbox li input,
 .gform_wrapper.gf_browser_chrome .gfield_checkbox li input[type=checkbox],

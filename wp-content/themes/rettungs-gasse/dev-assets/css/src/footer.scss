@@ -52,4 +52,13 @@
 
 .footer-widet-column-3 {
 	text-align: left;
+	.btn-primary {
+		background-color: $white;
+		color: $primary !important;
+		&:hover {
+			color: $white !important;
+			background-color: $primary;
+			border-color: $white;
+		}
+	}
 }
