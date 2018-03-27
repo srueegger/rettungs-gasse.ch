@@ -208,7 +208,7 @@ if ( have_posts() ) : while ( have_posts() ):
 					?>
 					<div class="col-12 col-md-6 col-lg-4">
 						<div class="front-social-container">
-							<a href="<?php the_field('sm_link'); ?>"><img style="border: none; margin-top: 32px;" class=" img-fluid" src="<?php echo $image['sizes']['news-image']; ?>" alt="Rettungs Gasse auf Social Media"></a>
+							<a href="<?php the_field('sm_link'); ?>"><img style="border: none; margin-top: 32px;" class=" img-fluid" src="<?php echo $sm_image['sizes']['news-image']; ?>" alt="Rettungs Gasse auf Social Media"></a>
 							<h3 class="mt-4"><?php the_field('sm_txt'); ?></h3>
 						</div>
 					</div>

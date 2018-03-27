@@ -15,43 +15,6 @@ get_header();
 			if ( have_posts() ) : while ( have_posts() ):
 				the_post();
 				$image = get_field('image');
-				?>
-				<div id="team-desc-<?php the_ID(); ?>" class="col-12 team-archive-desc">
-					<div class="row">
-						<div class="col-12 col-md-4 d-none d-md-block">
-							<img src="<?php echo $image['sizes']['team-rechteck-container']; ?>" class="img-fluid team-image">
-						</div>
-						<div class="col-12 col-md-8">
-							<div class="row">
-								<div class="col-10">
-									<?php
-									the_title('<h3>', '</h3>');
-								echo '</div>';
-								echo '<div class="col-2"><p class="float-right"><i id="close-team-desc-'.get_the_ID().'" class="fa fa-times fa-3x text-primary close-team-desc" aria-hidden="true"></i></p></div>';
-							echo '</div>';
-							echo '<p><strong>'.$terms_print.'</strong></p>';
-							the_field('more_txt');
-							if(!empty(get_field('zitat_der_person'))):
-								echo '<blockquote class="team-quote"><i class="fa fa-quote-right fa-2x text-primary mr-3" aria-hidden="true"></i><span style="font-size: 2rem;">'.get_field('zitat_der_person').'</span></blockquote>';
-							endif;
-							if(have_rows('links')):
-								echo '<ul class="list-inline">';
-								while(have_rows('links')):
-									the_row();
-									$link = get_sub_field('link');
-									$target = '_self';
-									if(!empty($link['target'])):
-										$target = '_blank';
-									endif;
-									echo '<li class="list-inline-item mr-4"><a href="'.$link['url'].'" target="'.$target.'"><i class="fa '.get_sub_field('icon').' fa-2x" aria-hidden="true"></i></a></li>';
-								endwhile;
-								echo '</ul>';
-							endif;
-							?>
-						</div>
-					</div>
-				</div>
-				<?php
 				$terms = get_the_terms($post, 'team_functions');
 				$terms_print = '';
 				foreach($terms as $term):
@@ -61,8 +24,9 @@ get_header();
 				$quote = htmlentities($quote);
 				$txt = get_field('more_txt');
 				$txt = htmlentities($txt);
+				$socialmedia = get_field('team_social_media_links');
 				?>
-				<a data-toggle="modal" data-target="#teamModal" data-quote="<?php echo $quote; ?>" data-img="<?php echo $image['sizes']['team-rechteck-container']; ?>" data-txt="<?php echo $txt; ?>" data-terms="<?php echo $terms_print; ?>" data-teamname="<?php the_title(); ?>" <?php post_class($post_classes); ?>>
+				<a data-toggle="modal" data-target="#teamModal" data-mail="<?php echo $socialmedia['mail']; ?>" data-linkedin="<?php echo $socialmedia['linkedin']; ?>" data-facebook="<?php echo $socialmedia['facebook']; ?>" data-twitter="<?php echo $socialmedia['twitter']; ?>" data-instagram="<?php echo $socialmedia['instagram']; ?>" data-xing="<?php echo $socialmedia['xing']; ?>" data-quote="<?php echo $quote; ?>" data-img="<?php echo $image['sizes']['team-rechteck-container']; ?>" data-txt="<?php echo $txt; ?>" data-terms="<?php echo $terms_print; ?>" data-teamname="<?php the_title(); ?>" <?php post_class($post_classes); ?>>
 					<div id="team-img-<?php the_ID(); ?>">
 						<div id="layer-<?php the_ID(); ?>" class="team-layer"><img id="photo-<?php the_ID(); ?>" class="img-fluid team-image" src="<?php echo $image['sizes']['team-rechteck-container']; ?>" alt="<?php the_title(); ?>">
 						<?php
@@ -101,6 +65,14 @@ get_header();
 							<strong class="term-titles"></strong>
 							<p class="team-txt"></p>
 							<blockquote class="team-quote"><i class="fa fa-quote-right fa-2x text-primary mr-3" aria-hidden="true"></i><span class="team-quote-insert" style="font-size: 2rem;"></span></blockquote>
+							<ul class="list-inline">
+								<li class="list-inline-item mr-4 mail-li"><a class="mail-link" href=""><i class="fa fa-envelope-o fa-2x" aria-hidden="true"></i></a></li>
+								<li class="list-inline-item mr-4 linkedin-li"><a class="linkedin-link" href="" target="_blank"><i class="fa fa-linkedin fa-2x" aria-hidden="true"></i></a></li>
+								<li class="list-inline-item mr-4 facebook-li"><a class="facebook-link" href="" target="_blank"><i class="fa fa-facebook fa-2x" aria-hidden="true"></i></a></li>
+								<li class="list-inline-item mr-4 twitter-li"><a class="twitter-link" href="" target="_blank"><i class="fa fa-twitter fa-2x" aria-hidden="true"></i></a></li>
+								<li class="list-inline-item mr-4 instagram-li"><a class="instagram-link" href="" target="_blank"><i class="fa fa-instagram fa-2x" aria-hidden="true"></i></a></li>
+								<li class="list-inline-item mr-4 xing-li"><a class="xing-link" href="" target="_blank"><i class="fa fa-xing fa-2x" aria-hidden="true"></i></a></li>
+							</ul>
 						</div>
 					</div>
 				</div>

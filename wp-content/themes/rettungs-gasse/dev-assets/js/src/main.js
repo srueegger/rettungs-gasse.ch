@@ -271,6 +271,12 @@
 		var terms = button.data('terms');
 		var quote = button.data('quote');
 		var txt = button.data('txt');
+		var mail = button.data('mail');
+		var linkedin = button.data('linkedin');
+		var facebook = button.data('facebook');
+		var twitter = button.data('twitter');
+		var instagram = button.data('instagram');
+		var xing = button.data('xing');
 		var modal = $(this);
 		modal.find('.modal-title').text(name);
 		modal.find('#team-image-modal').prop('alt', name);
@@ -278,5 +284,35 @@
 		modal.find('.term-titles').text(terms);
 		modal.find('.team-quote-insert').html(quote);
 		modal.find('.team-txt').html(txt);
+		if(mail == '') {
+			$('.mail-li').hide();
+		}else{
+			modal.find('.mail-link').prop('href', 'mailto:'+mail);
+		}
+		if(linkedin == '') {
+			$('.linkedin-li').hide();
+		}else{
+			modal.find('.linkedin-link').prop('href', linkedin);
+		}
+		if(facebook == '') {
+			$('.facebook-li').hide();
+		}else{
+			$('.facebook-link').prop('href', facebook);
+		}
+		if(twitter == '') {
+			$('.twitter-li').hide();
+		}else{
+			$('.twitter-link').prop('href', twitter);
+		}
+		if(instagram == '') {
+			$('.instagram-li').hide();
+		}else{
+			$('.instagram-link').prop('href', instagram);
+		}
+		if(xing == '') {
+			$('.xing-li').hide();
+		}else{
+			$('.xing-link').prop('href', xing);
+		}
 	});
 })(jQuery);
