@@ -24,6 +24,13 @@
 		padding-top: 0 !important;
 		padding-bottom: 0 !important;
 	}
+	.footer-widget-container {
+		padding: 3rem;
+		@include media-breakpoint-down(lg) {
+			padding-bottom: 0;
+			padding-top: 0;
+		}
+	}
 }
 
 .rg_widget_new_posts p {

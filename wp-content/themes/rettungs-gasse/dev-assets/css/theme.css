@@ -10465,6 +10465,12 @@ blockquote {
   #footer {
     padding-top: 0 !important;
     padding-bottom: 0 !important; } }
+#footer .footer-widget-container {
+  padding: 3rem; }
+  @media (max-width: 1199.98px) {
+    #footer .footer-widget-container {
+      padding-bottom: 0;
+      padding-top: 0; } }
 
 .rg_widget_new_posts p {
   font-style: italic; }

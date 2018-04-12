@@ -1,10 +1,10 @@
 	<div id="footer" class="text-white bg-primary">
 		<div class="container">
 			<div class="row">
-				<div class="p-5 col-12 col-md-6">
+				<div class="col-12 col-md-6 footer-widget-container">
 					<?php dynamic_sidebar( 'footer-sidebar-1' ); ?>
 				</div>
-				<div class="p-5 col-12 col-md-6">
+				<div class="col-12 col-md-6 footer-widget-container">
 					<?php dynamic_sidebar( 'footer-sidebar-3' ); ?>
 				</div>
 			</div>
