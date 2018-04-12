@@ -10464,7 +10464,9 @@ blockquote {
 @media (max-width: 1199.98px) {
   #footer {
     padding-top: 0 !important;
-    padding-bottom: 0 !important; } }
+    padding-bottom: 0 !important; }
+    #footer h4 {
+      font-size: 1.3rem; } }
 #footer .footer-widget-container {
   padding: 3rem; }
   @media (max-width: 1199.98px) {
@@ -10489,7 +10491,7 @@ blockquote {
   height: 50px;
   z-index: 9999;
   background-color: #014979;
-  opacity: 0.7;
+  opacity: .7;
   color: #fff;
   border: none; }
 
@@ -10502,6 +10504,14 @@ blockquote {
       color: #fff !important;
       background-color: #014979;
       border-color: #fff; }
+
+.widget-sm-icon {
+  font-size: 2.5rem;
+  margin-right: 1rem; }
+  @media (max-width: 1199.98px) {
+    .widget-sm-icon {
+      font-size: 2.2rem;
+      margin-right: .5rem; } }
 
 .gform_wrapper.gf_browser_chrome .gfield_checkbox li input,
 .gform_wrapper.gf_browser_chrome .gfield_checkbox li input[type=checkbox],

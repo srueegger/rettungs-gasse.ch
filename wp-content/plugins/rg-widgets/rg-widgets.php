@@ -91,7 +91,7 @@ class rg_widget_sm_menu extends WP_Widget {
 				$target = '_self;';
 			endif;
 			$icon = get_field('icon', $menu);
-			echo '<li class="list-inline-item"><a href="'.$menu->url.'" class="'.$classes.'" target="'.$target.'"><i class="fa '.$icon.' fa-2x mr-3" aria-hidden="true"></i></a></li>';
+			echo '<li class="list-inline-item"><a href="'.$menu->url.'" class="'.$classes.'" target="'.$target.'"><i class="fa '.$icon.' widget-sm-icon" aria-hidden="true"></i></a></li>';
 		endforeach;
 		echo '</ul>';
 		echo $args['after_widget'];
