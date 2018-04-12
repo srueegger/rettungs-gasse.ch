@@ -33,7 +33,7 @@ if ( have_posts() ) : while ( have_posts() ):
 						?>
 						<div style="background-image: url('<?php echo $image['sizes']['fullwidth-image']; ?>');" class="lp-bg-slide-item carousel-item<?php echo $active; ?>">
 							<?php if(!empty(get_sub_field('title')) or !empty(get_sub_field('slider_txt'))): ?>
-								<div class="carousel-caption lp-slider-caption d-none d-md-block">
+								<div class="carousel-caption lp-slider-caption">
 									<?php if(!empty(get_sub_field('title'))): ?>
 										<h2><?php the_sub_field('title'); ?></h2>
 									<?php endif; ?>

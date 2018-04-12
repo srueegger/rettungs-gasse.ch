@@ -40,7 +40,9 @@ blockquote {
 	background-position: center center;
 	background-repeat: no-repeat;
 	background-size: cover;
-	//background-attachment: fixed;
+	@include media-breakpoint-down(md) {
+		background-position: left -400px center;
+	}
 }
 
 .carousel-control-prev,
@@ -392,6 +394,15 @@ blockquote {
 	border-radius: 10px;
 	h2 {
 		color: $white;
+	}
+	@include media-breakpoint-down(lg) {
+		bottom: 25vh;
+		width: 95%;
+		left: 2.5%;
+		right: 2.5%;
+		h2 {
+			font-size: 1.7rem;
+		}
 	}
 }
 

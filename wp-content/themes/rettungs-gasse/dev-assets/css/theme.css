@@ -9912,6 +9912,10 @@ a.text-dark:hover, a.text-dark:focus {
     transform: translate(-50%, -50%);
     background-color: rgba(255, 255, 255, 0.7);
     padding: 2.5rem; }
+    @media (max-width: 1199.98px) {
+      .page-header-image h2 {
+        padding: 1rem;
+        width: 100%; } }
 
 .ribbon-wrapper {
   width: 200px;
@@ -9990,6 +9994,9 @@ blockquote {
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover; }
+  @media (max-width: 991.98px) {
+    .lp-bg-slide-item {
+      background-position: left -400px center; } }
 
 .carousel-control-prev,
 .carousel-control-next {
@@ -10274,6 +10281,14 @@ blockquote {
   border-radius: 10px; }
   .lp-slider-caption h2 {
     color: #fff; }
+  @media (max-width: 1199.98px) {
+    .lp-slider-caption {
+      bottom: 25vh;
+      width: 95%;
+      left: 2.5%;
+      right: 2.5%; }
+      .lp-slider-caption h2 {
+        font-size: 1.7rem; } }
 
 #single-event-map,
 #all-event-map {
