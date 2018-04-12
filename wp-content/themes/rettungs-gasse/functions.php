@@ -13,6 +13,7 @@ define( 'DIST_JS', THEME_URI . '/dist-assets/js' );
 /***************************************
  * Include helpers
  ***************************************/
+require_once 'inc/acf.php';
 require_once 'inc/check-required-plugins.php';
 require_once 'inc/wordpress-bootstrap-navwalker.php';
 
