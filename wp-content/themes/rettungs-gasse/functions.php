@@ -43,12 +43,12 @@ add_image_size( 'team-rechteck-container', 475, 271, true );
 /***************************************
  * Add Wordpress Menus
  ***************************************/
-function rg_lindahls_menu() {
+function rg_setup_menu() {
 	register_nav_menu( 'main-menu', 'Hauptmenü' );
 	register_nav_menu( 'social-menu', 'Social Media Menü' );
 	register_nav_menu( 'footer-menu', 'Footer Menü' );
 }
-add_action( 'after_setup_theme', 'rg_lindahls_menu' );
+add_action( 'after_setup_theme', 'rg_setup_menu' );
 
 /***************************************
  * 		Enqueue scripts and styles.
@@ -95,7 +95,8 @@ add_action( 'acf/init', 'rg_acf_init' );
 function rg_remove_menus() {
 	remove_menu_page( 'edit-comments.php' );
 	remove_menu_page( 'edit.php' );
-	#remove_menu_page( 'tools.php' );
+	remove_menu_page( 'tools.php' );
+	remove_menu_page( 'edit.php?post_type=acf-field-group' );
 }
 add_action( 'admin_menu', 'rg_remove_menus' );
 
@@ -195,7 +196,6 @@ function rg_set_posts_per_page_for_presse_cpt( $query ) {
 }
 add_action( 'pre_get_posts', 'rg_set_posts_per_page_for_presse_cpt' );
 
-
 /***************************************
  * Customize User Roles
  ***************************************/
@@ -208,7 +208,7 @@ function rg_userroles(){
 add_action( 'init', 'rg_userroles' );
 
 /***************************************
- * Add Option to Remove GravityfLabelsorm 
+ * Add Option to Remove Gravityf Labels
  ***************************************/
 add_filter( 'gform_enable_field_label_visibility_settings', '__return_true' );
 
