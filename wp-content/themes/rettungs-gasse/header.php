@@ -63,52 +63,89 @@
 	<?php
 	if(!is_front_page()):
 		$default_image = get_field('header_bg_pages', 'option');
+		$default_mobile_image = get_field('header_bg_pages_mobile', 'option');
 		$page_bg_image = get_field('page_header_bg', get_queried_object_id());
+		$page_bg_image_mobile = get_field('page_header_bg_mobile', get_queried_object_id());
 		$page_bg_text = get_field('page_header_text', get_queried_object_id());
+		$has_bg_txt = true;
 		if(empty($page_bg_image)):
 			$bg_img_url = $default_image['sizes']['fullwidth-image'];
 		else:
 			$bg_img_url = $page_bg_image['sizes']['fullwidth-image'];
 		endif;
-		if(empty($page_bg_text)):
-			$bg_img_txt = get_the_title(get_queried_object_id());
+		if(empty($page_bg_image_mobile)):
+			$bg_img_mobile_url = $default_mobile_image['sizes']['fullwidth-image'];
 		else:
-			$bg_img_txt = $page_bg_text;
+			$bg_img_mobile_url = $page_bg_image_mobile['sizes']['fullwidth-image'];
+		endif;
+		if(!get_field('has_txt_bg_header', get_queried_object())):
+			if(empty($page_bg_text)):
+				$bg_img_txt = get_the_title(get_queried_object_id());
+			else:
+				$bg_img_txt = $page_bg_text;
+			endif;
+		else:
+			$has_bg_txt = false;
 		endif;
 		if(is_post_type_archive('team')):
 			$team_settings = get_field('header_einstellungen', 'option');
 			$bg_img_url = $team_settings['team_bg_image']['sizes']['fullwidth-image'];
+			$bg_img_mobile_url = $team_settings['team_bg_image_mobile']['sizes']['fullwidth-image'];
 			$bg_img_txt = $team_settings['team_title'];
 		endif;
 		if(is_post_type_archive('presse')):
 			$bg_img_url = get_field('bg_presse_header_image', 'option')['sizes']['fullwidth-image'];
+			$bg_img_mobile_url = get_field('bg_presse_header_image_mobile', 'option')['sizes']['fullwidth-image'];
 			$bg_img_txt = get_field('bg_presse_title', 'option');
 		endif;
 		if(is_post_type_archive('partner')):
 			$bg_img_url = get_field('bg_partner_header_image', 'option')['sizes']['fullwidth-image'];
+			$bg_img_mobile_url = get_field('bg_partner_header_image_mobile', 'option')['sizes']['fullwidth-image'];
 			$bg_img_txt = get_field('bg_partner_title', 'option');
 		endif;
 		if(is_post_type_archive('events')):
 			$bg_img_url = get_field('bg_events_header_image', 'option')['sizes']['fullwidth-image'];
+			$bg_img_mobile_url = get_field('bg_events_header_image_mobile', 'option')['sizes']['fullwidth-image'];
 			$bg_img_txt = get_field('bg_events_title', 'option');
 		endif;
 		if(is_post_type_archive('mitstreiter')):
 			$mitstreiter_settings = get_field('mitstreiter_header_einstellungen', 'option');
 			$bg_img_url = $mitstreiter_settings['mitstreiter_bg_image']['sizes']['fullwidth-image'];
+			$bg_img_mobile_url = $mitstreiter_settings['mitstreiter_bg_image_mobile']['sizes']['fullwidth-image'];
 			$bg_img_txt = $mitstreiter_settings['mitstreiter_title'];
 		endif;
 		if(is_post_type_archive('downloads')):
 			$bg_img_url = get_field('bg_downlaods_header_image', 'option')['sizes']['fullwidth-image'];
+			$bg_img_mobile_url = get_field('bg_downloads_header_image_mobile', 'option')['sizes']['fullwidth-image'];
 			$bg_img_txt = get_field('bg_downloads_title', 'option');
 		endif;
 		if(is_tax('downloads_categories')):
 			$term = get_term(get_queried_object()->term_id, 'downloads_categories');
 			$image = get_field('header_bild', $term);
+			$image_mobile = get_field('header_bild_mobile', $term);
 			$bg_img_txt = $term->name;
 			$bg_img_url = $image['sizes']['fullwidth-image'];
+			$bg_img_mobile_url = $image_mobile['sizes']['fullwidth-image'];
+		endif;
+		if(empty($bg_img_txt)):
+			$has_bg_txt = false;
+		endif;
+		if(empty($bg_img_mobile_url)):
+			$bg_img_mobile_url = $bg_img_url;
 		endif;
 		?>
-		<div class="page-header-image mb-5" style="background-image: url('<?php echo $bg_img_url; ?>');">
-			<div class="header-title-container"><h2><?php echo $bg_img_txt; ?></h2></div>
+		<div class="page-header-image mb-5 d-none d-lg-block" style="background-image: url('<?php echo $bg_img_url; ?>');">
+			<?php if($has_bg_txt): ?>
+				<div class="header-title-container">
+					<h2><?php echo $bg_img_txt; ?></h2>
+				</div>
+			<?php endif; ?>
+		</div>
+		<div class="page-header-image mb-5 d-block d-lg-none" style="background-image: url('<?php echo $bg_img_mobile_url; ?>');">
+			<?php if($has_bg_txt): ?>
+				<div class="header-title-container">
+					<h2><?php echo $bg_img_txt; ?></h2>
+				</div>
+			<?php endif; ?>
 		</div>
 	<?php endif;

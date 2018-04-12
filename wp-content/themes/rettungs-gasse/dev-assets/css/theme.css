@@ -9994,9 +9994,6 @@ blockquote {
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover; }
-  @media (max-width: 991.98px) {
-    .lp-bg-slide-item {
-      background-position: left -400px center; } }
 
 .carousel-control-prev,
 .carousel-control-next {

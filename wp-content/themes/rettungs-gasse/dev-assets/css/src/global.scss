@@ -40,9 +40,9 @@ blockquote {
 	background-position: center center;
 	background-repeat: no-repeat;
 	background-size: cover;
-	@include media-breakpoint-down(md) {
-		background-position: left -400px center;
-	}
+	//@include media-breakpoint-down(md) {
+	//	background-position: left -400px center;
+	//}
 }
 
 .carousel-control-prev,
