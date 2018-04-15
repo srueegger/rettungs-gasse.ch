@@ -16,9 +16,11 @@ get_header();
 				$image = get_field('image');
 				$terms = get_the_terms($post, 'team_functions');
 				$terms_print = '';
-				foreach($terms as $term):
-					$terms_print .= $term->name.' ';
-				endforeach;
+				if(!empty($terms)):
+					foreach($terms as $term):
+						$terms_print .= $term->name.' ';
+					endforeach;
+				endif;
 				$quote = get_field('zitat_der_person');
 				$quote = htmlentities($quote);
 				$txt = get_field('more_txt');
@@ -41,6 +43,25 @@ get_header();
 			?>
 		</div>
 	</div>
+	<?php if(!empty(get_field('team_organigram_titel', 'option'))): ?>
+		<div class="container">
+			<div class="row">
+				<div class="col-12">
+					<h3><?php the_field('team_organigram_titel', 'option'); ?></h3>
+				</div>
+			</div>
+		</div>
+		<?php
+	endif;
+	if(!empty(get_field('team_image_organigram', 'option'))): ?>
+		<div class="container-fluid mb-4">
+			<div class="row">
+				<div class="col-12">
+					<img src="<?php echo get_field('team_image_organigram', 'option')['url']; ?>" class="no-border img-fluid" alt="Organigram">
+				</div>
+			</div>
+		</div>
+	<?php endif; ?>
 </main>
 <div class="modal fade" id="teamModal" tabindex="-1" role="dialog" aria-labelledby="teamModalTitle" aria-hidden="true">
 		<div class="modal-dialog modal-dialog-centered modal-lg" role="document">
