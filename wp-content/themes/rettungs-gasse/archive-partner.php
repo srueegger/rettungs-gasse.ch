@@ -35,7 +35,7 @@ get_header();
 				foreach($posts as $post):
 					setup_postdata($post);
 					?>
-					<div <?php post_class('mt-3'); ?>>
+					<div <?php post_class('mt-5'); ?>>
 					<?php
 					$image = get_field('image');
 					echo '<a target="_blank" href="'.get_field('url').'"><img class="img-fluid partner-image" src="'.$image['sizes']['presse-image'].'" alt="'.get_the_title().'"></a>';
