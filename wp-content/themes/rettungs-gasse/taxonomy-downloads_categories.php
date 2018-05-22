@@ -2,12 +2,22 @@
 if(!empty($_GET['get_file']) && !empty($_GET['post_id'])):
 	$post_id = $_GET['post_id'];
 	$file = $_GET['get_file'];
+	$quoted = sprintf('"%s"', addcslashes(basename($file), '"\\'));
+	$size = filesize($file);
 	$count = (int) get_field('count_downloads', $post_id);
 	$count++;
 	update_field('count_downloads', $count, $post_id);
-	header("Content-Disposition: attachment; filename=\"$file\"");
-	header("Pragma: public");
-	header("Cache-Control: must-revalidate, post-check=0, pre-check=0");
+	header('Location: '.$file);
+	/*header($_SERVER["SERVER_PROTOCOL"] . " 200 OK");
+	header('Content-Description: File Transfer');
+	header('Content-Type: application/octet-stream');
+	header('Content-Disposition: attachment; filename=' . $quoted); 
+	header('Content-Transfer-Encoding: binary');
+	header('Connection: Keep-Alive');
+	header('Expires: 0');
+	header('Cache-Control: must-revalidate, post-check=0, pre-check=0');
+	header('Pragma: public');
+	header('Content-Length: ' . $size);*/
 	exit;
 endif;
 get_header();
