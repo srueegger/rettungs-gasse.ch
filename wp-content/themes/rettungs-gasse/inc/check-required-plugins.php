@@ -69,12 +69,6 @@ function sa_admin_notice_need_plugins_error() {
 		$message = 'Das Plugin <strong>Post Type Select for Advanced Custom Fields</strong> wird zwingend benötigt!';
 		printf( '<div class="%1$s"><p>%2$s</p></div>', esc_attr( $class ), $message ); 
 	endif;
-	//SAR Friendly SMTP
-	if(!function_exists('sar_friendly_smtp')):
-		$class = 'notice notice-error';
-		$message = 'Das Plugin <strong>SAR Friendly SMTP</strong> wird zwingend benötigt!';
-		printf( '<div class="%1$s"><p>%2$s</p></div>', esc_attr( $class ), $message ); 
-	endif;
 	//WPML Multilingual CMS
 	if(!class_exists('SitePress')):
 		$class = 'notice notice-error';
