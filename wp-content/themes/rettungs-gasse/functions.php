@@ -56,16 +56,20 @@ add_action( 'after_setup_theme', 'rg_setup_menu' );
 function rg_startup_scripts() {
 	wp_enqueue_style( "rg-google-font", "https://fonts.googleapis.com/css?family=Lato:300i,400,400i,700,700i,900,900i" );
 	wp_deregister_script( 'jquery' );
-	wp_enqueue_script( 'jquery', DIST_JS."/jquery.min.js", null, '3.2.1', false );
+	wp_enqueue_script( 'jquery', DIST_JS."/jquery.min.js", null, '3.5.1', false );
 	wp_enqueue_script( 'jquery-migrate', DIST_JS."/jquery-migrate.min.js", array('jquery'), '1.4.1', false );
 	wp_enqueue_script( "jquery-ui", DIST_JS ."/jquery-ui.min.js", array('jquery'), '1.12.1', true );
 	wp_enqueue_style( "jquery-ui", DIST_CSS . '/jquery-ui.min.css' );
 	if (WP_DEBUG) {
-		wp_enqueue_style( "rettungsgasse-style", DEV_CSS . '/theme.css' );
-		wp_register_script( "rettungsgasse-script", DEV_JS ."/theme.js", array('jquery-ui', 'jquery'), '1.0', true );
+		$modificated_css = date( 'YmdHis', filemtime( get_stylesheet_directory() . '/dev-assets/css/theme.css' ) );
+		$modificated_js = date( 'YmdHis', filemtime( get_stylesheet_directory() . '/dev-assets/js/theme.js' ) );
+		wp_enqueue_style( "rettungsgasse-style", DEV_CSS . '/theme.css', array('rg-google-font'), $modificated_css );
+		wp_register_script( "rettungsgasse-script", DEV_JS ."/theme.js", array('jquery-ui', 'jquery'), $modificated_js, true );
 	}else{
-		wp_enqueue_style( "rettungsgasse-style", DIST_CSS . '/theme.min.css' );
-		wp_register_script( "rettungsgasse-script", DIST_JS ."/theme.min.js", array('jquery-ui', 'jquery'), '1.0', true );
+		$modificated_css = date( 'YmdHis', filemtime( get_stylesheet_directory() . '/dist-assets/css/theme.min.css' ) );
+		$modificated_js = date( 'YmdHis', filemtime( get_stylesheet_directory() . '/dist-assets/js/theme.min.js' ) );
+		wp_enqueue_style( "rettungsgasse-style", DIST_CSS . '/theme.min.css', array('rg-google-font'), $modificated_css );
+		wp_register_script( "rettungsgasse-script", DIST_JS ."/theme.min.js", array('jquery-ui', 'jquery'), $modificated_js, true );
 	}
 	wp_enqueue_script( 'rettungsgasse-script' );
 	wp_enqueue_script( 'google-maps', 'https://maps.googleapis.com/maps/api/js?key=AIzaSyBNKcSZiv-2W3sMQ0uxPYDKl5wI6Fzlad0', '', '' );
