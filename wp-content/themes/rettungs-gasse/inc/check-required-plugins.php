@@ -45,12 +45,6 @@ function sa_admin_notice_need_plugins_error() {
 		$message = 'Das Plugin <strong>Gravity Forms Multilingual</strong> wird zwingend benötigt!';
 		printf( '<div class="%1$s"><p>%2$s</p></div>', esc_attr( $class ), $message ); 
 	endif;
-	//Gravity Forms MailChimp Add-On
-	if(!class_exists('GF_MailChimp_Bootstrap')):
-		$class = 'notice notice-error';
-		$message = 'Das Plugin <strong>Gravity Forms MailChimp Add-On</strong> wird zwingend benötigt!';
-		printf( '<div class="%1$s"><p>%2$s</p></div>', esc_attr( $class ), $message ); 
-	endif;
 	//Intuitive Custom Post Order
 	if(!class_exists('Hicpo')):
 		$class = 'notice notice-error';

@@ -315,4 +315,11 @@
 			$('.xing-link').prop('href', xing);
 		}
 	});
+
+	/* Neues Newsletter Formular set Placeholder */
+	$('#rm-firstname').attr('placeholder', 'Vorname');
+	$('#rm-lastname').attr('placeholder', 'Nachname');
+	$('#rm-email').attr('placeholder', 'E-Mail-Adresse');
+	$('#rm-firstname').attr('required', 'required');
+	$('#rm-lastname').attr('required', 'required');
 })(jQuery);

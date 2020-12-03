@@ -64,3 +64,13 @@
 		}
 	}
 }
+
+.rm-form-container {
+	padding: 0;
+	li {
+		margin-bottom: 15px !important;
+	}
+	label {
+		display: none;
+	}
+}
