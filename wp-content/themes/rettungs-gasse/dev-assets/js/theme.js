@@ -17493,4 +17493,14 @@ Object.defineProperty(exports, '__esModule', { value: true });
 		var go_to = $(this).data('goto');
 		window.location = go_to;
 	});
+
+	/* Modal Window anzeigen */
+	if(!sessionStorage.getItem('modal_show')) {
+		$('#rgModal').modal('show');
+	}
+
+	/* sessionStorage setzen sobald das Modal Windows angezeigt wurde */
+	$('#rgModal').on('shown.bs.modal', function () {
+		sessionStorage.setItem('modal_show', 1);
+	});
 })(jQuery);
