@@ -322,4 +322,10 @@
 	$('#rm-email').attr('placeholder', 'E-Mail-Adresse');
 	$('#rm-firstname').attr('required', 'required');
 	$('#rm-lastname').attr('required', 'required');
+
+	/* Ribbon Link Bugfix */
+	$('.ribbon').on('click', function() {
+		var go_to = $(this).data('goto');
+		window.location = go_to;
+	});
 })(jQuery);

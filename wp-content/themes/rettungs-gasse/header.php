@@ -52,7 +52,7 @@
 			endif;
 			?>
 			<div class="ribbon-wrapper">
-				<div class="ribbon">
+				<div style="cursor: pointer" data-goto="<?php echo $link['url']; ?>" class="ribbon">
 					<a href="<?php echo $link['url']; ?>" target="<?php echo $target; ?>"><?php echo $link['title']; ?></a>
 				</div>
 			</div>

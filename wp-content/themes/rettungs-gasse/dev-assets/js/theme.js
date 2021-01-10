@@ -1,6 +1,6 @@
 /*! Rettungs Gasse Wordpress Theme - v0.1.0
  * https://rueegger.me
- * Copyright (c) 2020; * Licensed GPLv2+ */
+ * Copyright (c) 2021; * Licensed GPLv2+ */
 (function (global, factory) {
 	typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
 	typeof define === 'function' && define.amd ? define(factory) :
@@ -17487,4 +17487,10 @@ Object.defineProperty(exports, '__esModule', { value: true });
 	$('#rm-email').attr('placeholder', 'E-Mail-Adresse');
 	$('#rm-firstname').attr('required', 'required');
 	$('#rm-lastname').attr('required', 'required');
+
+	/* Ribbon Link Bugfix */
+	$('.ribbon').on('click', function() {
+		var go_to = $(this).data('goto');
+		window.location = go_to;
+	});
 })(jQuery);
